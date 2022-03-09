@@ -1,4 +1,4 @@
-<script src="{{ asset('js/script.min.js') }}" defer></script>
+<script src="{{ asset('js/app.min.js') }}" ></script>
 {{--Add to cart--}}
 <script>
     $(document).on('click', '.add_to_cart', function (e) {

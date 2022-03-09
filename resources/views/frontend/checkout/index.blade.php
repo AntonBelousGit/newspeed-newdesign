@@ -10,11 +10,11 @@
     {{--	<link rel="preload" href="{{ asset('/js/script.min.js')}}" as="script">--}}
 @endsection
 @section('scripts')
-    <script src="{{ asset('/js/script.min.js')}}"></script>
-    <script src="{{ asset('/js/script.js')}}"></script>
-    <script src="{{ asset('/js/checkout.js')}}"></script>
-    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{{--    <script src="{{ asset('/js/script.min.js')}}"></script>--}}
+{{--    <script src="{{ asset('/js/script.js')}}"></script>--}}
+{{--    <script src="{{ asset('/js/checkout.js')}}"></script>--}}
+{{--    --}}{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>--}}
 
 @endsection
 

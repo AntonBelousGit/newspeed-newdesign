@@ -1,91 +1,698 @@
-<header class="menu-bg">
-    <div class="menu">
-        <div class="menu-top container">
-            <div class="menu-top-cont callback">
-                <a class="callback-link text-b text-b-xxs" href=""><i class="icon-phone"></i>
-                    <span> +7 (000) 000-00-10</span></a>
-                <button class="text-r text-r-m text-r-blue callback-btn"
-                        onclick="$('#exampleModal6').arcticmodal();">Заказать звонок</button>
+<header class="header">
+    <div class="container">
+        <div class="top_header">
+            <div class="left_width">
+                <a href="#" class="link_logo">
+                    <span class="icon_logo"></span>
+                </a>
             </div>
-            <a class="logo" href=""><picture><source srcset="./img/logo.webp" type="image/webp"><img src="./img/logo.png" alt=""></picture></a>
-            <button class="phone-menu btn btn-s btn-orange clickBtn2">
-	<span class="burger-wrap  menu-wrap">
-		<span class="burger"></span>
-	</span>
-            </button>
-            <form class="menu-top-cont form-s" method="GET" action="{{ route('search') }}">
-                <input class="form-s-search" type="search" name="name" placeholder="Поиск">
-                <button class="btn btn-orange">Найти</button>
-            </form>
-            <div class="menu-top-cont w15">
-                <ul class="menu-top-cont-user center topmenu">
-                    <li class="submenu-link text-r text-r-m">
-                        <i class="icon-user2"></i>
-                        <span>Мой кабинет</span>
-                        <ul class="submenu">
-                            <li class="submenu-i"><a class="text-r text-r-m text-r-blue" href="">Админ</a></li>
-                            <li class="submenu-i"><button class="text-r text-r-m text-r-blue"
-                                                          onclick="$('#exampleModal4').arcticmodal();">Регистрация</button>
-                            </li>
-                            <li class="submenu-i">
-                                <button class="text-r text-r-m text-r-blue"
-                                        onclick="$('#exampleModal5').arcticmodal();">Войти</button>
-                            </li>
-                            <li class="submenu-i"><a class="text-r text-r-m text-r-blue" href="">Выход</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="menu-top-cont-c">
-                    <a class="text-sb" href=""><i class="icon-favorite"></i><span>1</span></a>
+            <div class="right_width">
+                <div class="menu_head">
+                    <a href="#">
+                        Акции
+                    </a>
+                    <a href="#">
+                        Блог
+                    </a>
+                    <a href="#">
+                        О компании
+                    </a>
+                    <a href="#">
+                        Контакты
+                    </a>
                 </div>
-                <div class="menu-top-cont-c cart" id="header-ajax">
-                    @php
-                        $cart =\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping');
-                    @endphp
-                    <button class="text-sb" onclick="$('#exampleModal0').arcticmodal();"><i
-                            class="icon-shopping_cart"></i><span>{{$cart->count()}}</span></button>
+                <div class="wrap_select_tel">
+                    <span class="icon icon_tel"></span>
+                    <a href="#">+7 (000) 000-00-10</a>
+                    <span class="icon icon_arr_bottom"></span>
+                    <!--                <a href="#">+7 (000) 000-00-10</a>-->
+                    <!--                <a href="#">+7 (000) 000-00-10</a>-->
+                    <!--                <a href="#">+7 (000) 000-00-10</a>-->
+                </div>
+                <div class="wrap_lang">
+                    <a href="#">Ua</a>
+                    <span>|</span>
+                    <a href="#" class="active">Ru</a>
+                    <span>|</span>
+                    <a href="#">En</a>
                 </div>
             </div>
         </div>
-        <div class="border-bot"></div>
-        <div class="menu-bot menu-b-t container">
-            <div class="menu-bot-cont">
-                <a class="logo" href=""><picture><source srcset="./img/logo.webp" type="image/webp"><img src="./img/logo.png" alt=""></picture></a>
-                <button class="menu-bot-cont-catalog-item btn btn-m btn-cat-menu btn-orange clickBtn1"
-                        onclick="onCatalog(this)">
-						<span class="burger-wrap catalog-wrap">
-							<span class="burger"></span>
-						</span>
-                    Каталог
-                </button>
-                <ul class="menu-bot-cont-catalog catalog top-menu">
-                    @if(isset($categories))
-                        @foreach($categories as $category)
-                            <li class="catalog-link text-r" onclick="dropCatalog(this)">
-                                <i class="icon-cricle center"></i>
-                                <a class="text-r text-r-l"
-                                   href="{{route('catalog.category',['category'=> $category->slug ])}}">{{$category->name}}</a>
-                                <ul class="sub-menu" style="display: none;">
-                                    @foreach ($category->childrenCategories as $childCategory)
-                                        @include('components.child_category', ['child_category' => $childCategory])
-                                    @endforeach
-                                </ul>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
+    </div>
+    <div class="bottom_header">
+        <div class="container">
+            <div class="bh_content">
+                <div class="left_width">
+                    <div class="menu_burger">
+                        <div class="burger">
+                            <span></span>
+                        </div>
+                        Каталог
+                    </div>
+                </div>
+
+                <div class="right_width">
+                    <div class="wrap_search">
+                        <input type="text" placeholder="Поиск">
+                        <button class="my_btn">Найти</button>
+                    </div>
+                    <div class="wrap_panel_icons">
+                        <a href="#" class="icon icon_user"></a>
+                        <a href="#" class="icon icon_scales"><span>28</span></a>
+                        <a href="#" class="icon icon_heart"><span>28</span></a>
+                        <a href="#" class="icon icon_basket"><span>28</span></a>
+                    </div>
+                </div>
             </div>
-            <nav class="menu-bot-cont w50">
-                <ul class="menu-bot-cont-menu">
-                    <li class="menu-bot-cont-menu-i"><a class="text-sb text-sb-m" href="">Акции</a></li>
-                    <li class="menu-bot-cont-menu-i"><a class="text-sb text-sb-m" href="">Как купить</a></li>
-                    <li class="menu-bot-cont-menu-i"><a class="text-sb text-sb-m" href="./page-blog.html">Блог</a>
-                    </li>
-                    <li class="menu-bot-cont-menu-i"><a class="text-sb text-sb-m" href="">Услуги</a></li>
-                    <li class="menu-bot-cont-menu-i"><a class="text-sb text-sb-m" href="">О компании</a></li>
-                    <li class="menu-bot-cont-menu-i"><a class="text-sb text-sb-m" href="">Контакты</a></li>
-                </ul>
-            </nav>
+        </div>
+    </div>
+    <div class="menu_catalog_wrap">
+        <div class="container">
+            <div class="menu_catalog">
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_mobile"></div>
+                            Смартфоны и телефоны
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_tv"></div>
+                            Телевизоры и аудиотехника
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_pc"></div>
+                            Ноутбуки, ПК и Планшеты
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_technique"></div>
+                            Техника для кухни
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_technique_home"></div>
+                            Техника для дома
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_game_boot"></div>
+                            Игровая зона
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_gadget"></div>
+                            Гаджеты и аксесуары
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_сup"></div>
+                            Посуда
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_photo"></div>
+                            Фото и видео
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_glasses"></div>
+                            Красота и здоровье
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_car"></div>
+                            Авто и инструменты
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_sport"></div>
+                            Спорт и туризм
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_garden"></div>
+                            Товары для дома и сада
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mc_link">
+                    <a href="#">
+                        <div class="text_catalog">
+                            <div class="icon icon_product_child"></div>
+                            Товары для детей
+                        </div>
+                        <span class="icon icon_arr_right"></span>
+                    </a>
+                    <div class="un_list">
+                        <div class="wrap_list_un_menu">
+                            <h3 class="title_un_menu">
+                                Заголовок
+                            </h3>
+                            <div class="un_menu">
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                                <a href="#">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </header>
