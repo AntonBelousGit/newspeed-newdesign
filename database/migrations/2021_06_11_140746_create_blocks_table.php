@@ -20,7 +20,6 @@ class CreateBlocksTable extends Migration
             $table->boolean('status');
             $table->string('model')->nullable();
             $table->string('themplate')->nullable();
-            $table->json('ids')->nullable();
             $table->json('value')->nullable();
             $table->integer('position')->nullable();
             $table->timestamps();

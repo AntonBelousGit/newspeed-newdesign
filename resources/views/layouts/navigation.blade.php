@@ -2,7 +2,7 @@
     <div class="container">
         <div class="top_header">
             <div class="left_width">
-                <a href="#" class="link_logo">
+                <a href="/" class="link_logo">
                     <span class="icon_logo"></span>
                 </a>
             </div>

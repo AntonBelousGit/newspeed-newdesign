@@ -6,6 +6,7 @@ namespace App\Service;
 
 use App\Models\Block;
 use App\Models\Product;
+use App\Repositories\BlogRepositories;
 use App\Repositories\CategoryRepositories;
 use App\Repositories\GalleriesRepositories;
 use App\Repositories\ProductRepositories;
@@ -16,13 +17,15 @@ class BlockService
     protected $productRepositories;
     protected $galleriesRepositories;
     protected $categoryRepositories;
+    protected $blogRepositories;
     protected $blocks;
 
-    public function __construct(ProductRepositories $productRepositories, GalleriesRepositories $galleriesRepositories, CategoryRepositories $categoryRepositories)
+    public function __construct(ProductRepositories $productRepositories, GalleriesRepositories $galleriesRepositories, CategoryRepositories $categoryRepositories, BlogRepositories $blogRepositories)
     {
         $this->productRepositories = $productRepositories;
         $this->galleriesRepositories = $galleriesRepositories;
         $this->categoryRepositories = $categoryRepositories;
+        $this->blogRepositories = $blogRepositories;
         $this->blocks = Block::where('status', '!=', 0)->orderBy('position', 'asc')->toBase()->get(['model', 'themplate', 'slug']);
     }
 

@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\GalleriesController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\Site\BlogController;
 use App\Http\Controllers\Site\CartController;
 use App\Http\Controllers\Site\CheckoutController;
 use App\Http\Controllers\Site\OrderController;
@@ -62,7 +62,7 @@ Route::group(['prefix'=>'checkout'],function (){
 });
 
 Route::resource('/blogs', BlogController::class);
-Route::get('/blogs/{slug}', [BlogController::class, 'show']);
+Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::resource('blogs', BlogController::class)->scoped([
     'blog' => 'slug',

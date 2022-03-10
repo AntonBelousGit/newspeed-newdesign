@@ -1,13 +1,12 @@
-<div class="bg-p bg-Cw">
-    <div class="hit center container">
-        <div class="box-title">
-            <h2 class="title-i">Хиты продаж</h2>
-            <a class="btn btn-xs btn-orange">Смотреть все</a>
+<section class="section_category section">
+    <div class="container">
+        <div class="category_content">
+            <h3>
+                {{__('Рекомендуемые товары')}}
+            </h3>
+            <div class="list_product">
+                @each('components.galleries.featured.item', $block, 'item', 'components.galleries.empty')
+            </div>
         </div>
-        <ul class="rowCart">
-
-            @each('components.galleries.featured.item', $block, 'item', 'components.galleries.empty')
-        </ul>
-        <button class="btn btn-xs btn-greey">Показать еще</button>
     </div>
-</div>
+</section>

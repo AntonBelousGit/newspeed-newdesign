@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@section('style')
-@endsection
-@section('script')
-@endsection
+
 @section('content')
 <main class="PA-main">
     <div class="baners bg-Cw">
@@ -22,7 +19,7 @@
             </ul>
         </div>
         <div class="container">
-            <div class="date-blog text-r text-r-m">{{ $blog->created_at->format('d.m.Y') }}</div>
+            <div class="date-blog text-r text-r-m">{{ $blog->created_at?->format('d.m.Y') }}</div>
             <div class="pageBlog">
                 <article class="pageBlog-aticle">
                     <h3 class="title-i">{{ $blog->title }}</h3>

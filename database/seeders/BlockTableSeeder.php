@@ -22,7 +22,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '1', 'model' => 'galleriesRepositories',
                 'themplate' => 'mainslider',
                 'position' => '1',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -32,7 +31,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '1', 'model' => 'galleriesRepositories',
                 'themplate' => 'sliders',
                 'position' => '2',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -42,7 +40,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'categoryRepositories',
                 'themplate' => 'popcat',
                 'position' => '3',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -52,7 +49,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'productRepositories',
                 'themplate' => 'promotions',
                 'position' => '4',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -61,8 +57,7 @@ class BlockTableSeeder extends Seeder
                 'slug' => 'services_template',
                 'status' => '0', 'model' => 'productRepositories',
                 'themplate' => 'services',
-                'position' => '6',
-                'ids' => '["1"]',
+                'position' => '19',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -72,7 +67,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'galleriesRepositories',
                 'themplate' => 'banner_products',
                 'position' => '8',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -82,7 +76,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'productRepositories',
                 'themplate' => 'featured',
                 'position' => '9',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -92,7 +85,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'productRepositories',
                 'themplate' => 'new_product',
                 'position' => '18',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -102,7 +94,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'galleriesRepositories',
                 'themplate' => 'two_banners',
                 'position' => '11',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -112,7 +103,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'galleriesRepositories',
                 'themplate' => 'promotion_banner',
                 'position' => '12',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -122,7 +112,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'productRepositories',
                 'themplate' => 'gallery_tabs',
                 'position' => '13',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -132,7 +121,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'subscribeRepositories',
                 'themplate' => 'subscribe',
                 'position' => '14',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -142,7 +130,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'galleriesRepositories',
                 'themplate' => 'themplate',
                 'position' => '15',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -152,7 +139,6 @@ class BlockTableSeeder extends Seeder
                 'status' => '0', 'model' => 'productRepositories',
                 'themplate' => 'product_tabs',
                 'position' => '16',
-                'ids' => '["1"]',
             ],
         ]);
         DB::table('blocks')->insert([
@@ -161,8 +147,7 @@ class BlockTableSeeder extends Seeder
                 'slug' => 'blog_template',
                 'status' => '0', 'model' => 'blogRepositories',
                 'themplate' => 'blog',
-                'position' => '17',
-                'ids' => '["1"]',
+                'position' => '18',
             ],
         ]);
     }

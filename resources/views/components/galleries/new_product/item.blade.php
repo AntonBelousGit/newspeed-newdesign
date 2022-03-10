@@ -1,34 +1,32 @@
-<li class="rowCart-item">
-    <div class="rowCart-item-box">
-        <a>
-            <figure>
-                <picture>
-                    <source srcset="{{asset('assets/uploads/products')}}/{{$item->image}}" type="image/webp">
-                    <img src="{{asset('assets/uploads/products')}}/{{$item->image}}" alt=""></picture>
-                <figcaption class="rowCart-item-link-box-text">
-                    {{ $item->name }}
-                </figcaption>
-            </figure>
-        </a>
-        <div class="price">
-            <span class="w45">
-                <span class="label label-sale">-{{ round((1- ($item->sale_price/$item->regular_price))*100) }}%</span>
-                <span class="text-r text-r-m text-r-greey t-d-t">{{ $item->regular_price }}</span>
-            </span>
-            <i class="icon-favorite"></i>
-        </div>
-        <p class="text-sb text-sb-xl">{{ $item->sale_price }}<span class="text-sb text-sb-s"> грн</span></p>
-        <div class="rating-box">
-            <span class="rating rating-active"></span>
-            <span class="rating rating-active"></span>
-            <span class="rating rating-active"></span>
-            <span class="rating rating-active"></span>
-            <span class="rating"></span>
-        </div>
-        <a href="{{ route("catalog.product", $item->slug) }}" class=" text-r text-r-m">{{ $item->name }}
-        </a>
-        <span class="label label-new">Новинка</span>
+<div class="item_product">
+    <a href="{{ route("catalog.product", $item->slug) }}" class="wrap_img">
+        <picture>
+            <source srcset="{{asset('assets/uploads/products')}}/{{$item->image}}" type="image/webp">
+            <img src="{{asset('assets/uploads/products')}}/{{$item->image}}" alt="img"></picture>
+    </a>
+    <a href="{{ route("catalog.product", $item->slug) }}" class="name_product">
+        {{ $item->name }}
+    </a>
+    <div class="wrap_compare">
+        <a href="#" class="icon icon_scales2"></a>
+        <a href="#" class="icon icon_heart2"></a>
     </div>
-</li>
+    <div class="wrap_basket">
 
+        <div class="price_product">
+            @if ($item->sale_price != $item->regular_price)
+                <div class="old_price">
+                    <p>{{ $item->regular_price }} грн.</p>
+                    <span>-{{ round((1- ($item->sale_price/$item->regular_price))*100) }}%</span>
+                </div>
+            @endif
+            <div class="new_price">
+                {{ $item->sale_price  }} грн.
+            </div>
+        </div>
+        <button class="my_btn btn_basket">
+            <div class="icon icon_basket2"></div>
+        </button>
+    </div>
+</div>
 
