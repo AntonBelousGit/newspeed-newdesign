@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GalleriesController;
+use App\Http\Controllers\Admin\Menu\MenuController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
@@ -62,9 +63,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'],
             'contact' => 'slug',
         ]);
 
-        Route::resource('order', OrderController::class);
-        Route::resource('brand', BrandController::class);
-
+        Route::resources([
+            'order' => OrderController::class,
+            'brand' => BrandController::class,
+            'menu' => MenuController::class,
+        ]);
 
         Route::group(['prefix' => 'attributes'], function () {
 

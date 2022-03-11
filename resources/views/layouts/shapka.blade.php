@@ -20,11 +20,11 @@
                     <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
                 </div>
                 <a href="javascript:void(0);" class="icon-menu btn-toggle-fullwidth"><i
-                            class="fa fa-arrow-left"></i></a>
+                        class="fa fa-arrow-left"></i></a>
                 <ul class="nav navbar-nav">
                     <li class="dropdown dropdown-animated scale-right">
                         <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown"><i
-                                    class="icon-grid"></i></a>
+                                class="icon-grid"></i></a>
                         <ul class="dropdown-menu menu-icon app_menu">
                             <li>
                                 <a class="#">
@@ -53,7 +53,7 @@
                         </ul>
                     </li>
                     <li><a href="app-calendar.html" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i
-                                    class="icon-calendar"></i></a></li>
+                                class="icon-calendar"></i></a></li>
                     <li><a href="app-chat.html" class="icon-menu d-none d-sm-block"><i class="icon-bubbles"></i></a>
                     </li>
                 </ul>
@@ -79,7 +79,7 @@
                                             <img class="media-object " src="../assets/images/xs/avatar4.jpg" alt="">
                                             <div class="media-body">
                                                 <span class="name">James Wert <small
-                                                            class="float-right">Just now</small></span>
+                                                        class="float-right">Just now</small></span>
                                                 <span class="message">Lorem ipsum Veniam aliquip culpa laboris minim tempor</span>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@
                                             <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
                                             <div class="media-body">
                                                 <span class="name">Ava Alexander <small
-                                                            class="float-right">38min ago</small></span>
+                                                        class="float-right">38min ago</small></span>
                                                 <span class="message">Many desktop publishing packages and web page editors</span>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                                             <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
                                             <div class="media-body">
                                                 <span class="name">Debra Stewart <small
-                                                            class="float-right">2hr ago</small></span>
+                                                        class="float-right">2hr ago</small></span>
                                                 <span class="message">Contrary to popular belief, Lorem Ipsum is not simply random text</span>
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@
                                         <div class="feeds-left"><i class="fa fa-thumbs-o-up text-success"></i></div>
                                         <div class="feeds-body">
                                             <h4 class="title text-success">7 New Feedback <small
-                                                        class="float-right text-muted">Today</small></h4>
+                                                    class="float-right text-muted">Today</small></h4>
                                             <small>It will give a smart finishing to your site</small>
                                         </div>
                                     </a>
@@ -144,7 +144,7 @@
                                         <div class="feeds-left"><i class="fa fa-user"></i></div>
                                         <div class="feeds-body">
                                             <h4 class="title">New User <small
-                                                        class="float-right text-muted">10:45</small></h4>
+                                                    class="float-right text-muted">10:45</small></h4>
                                             <small>I feel great! Thanks team</small>
                                         </div>
                                     </a>
@@ -154,7 +154,7 @@
                                         <div class="feeds-left"><i class="fa fa-question-circle text-warning"></i></div>
                                         <div class="feeds-body">
                                             <h4 class="title text-warning">Server Warning <small
-                                                        class="float-right text-muted">10:50</small></h4>
+                                                    class="float-right text-muted">10:50</small></h4>
                                             <small>Your connection is not private</small>
                                         </div>
                                     </a>
@@ -164,7 +164,7 @@
                                         <div class="feeds-left"><i class="fa fa-check text-danger"></i></div>
                                         <div class="feeds-body">
                                             <h4 class="title text-danger">Issue Fixed <small
-                                                        class="float-right text-muted">11:05</small></h4>
+                                                    class="float-right text-muted">11:05</small></h4>
                                             <small>WE have fix all Design bug with Responsive</small>
                                         </div>
                                     </a>
@@ -174,7 +174,7 @@
                                         <div class="feeds-left"><i class="fa fa-shopping-basket"></i></div>
                                         <div class="feeds-body">
                                             <h4 class="title">7 New Orders <small
-                                                        class="float-right text-muted">11:35</small></h4>
+                                                    class="float-right text-muted">11:35</small></h4>
                                             <small>You received a new oder from Tina.</small>
                                         </div>
                                     </a>
@@ -182,7 +182,7 @@
                             </ul>
                         </li>
                         <li><a href="javascript:void(0);" class="right_toggle icon-menu" title="Right Menu"><i
-                                        class="icon-settings"></i></a></li>
+                                    class="icon-settings"></i></a></li>
                         <li><a href="page-login.html" class="icon-menu"><i class="icon-power"></i></a></li>
                     </ul>
                 </div>
@@ -294,7 +294,8 @@
                                         <img class="media-object " src="../assets/images/xs/avatar4.jpg" alt="">
                                         <div class="media-body">
                                             <span class="name">Ava Alexander <small class="float-right">Just now</small></span>
-                                            <span class="message">Lorem ipsum Veniam aliquip culpa laboris minim tempor</span>
+                                            <span
+                                                class="message">Lorem ipsum Veniam aliquip culpa laboris minim tempor</span>
                                             <span class="badge badge-outline status"></span>
                                         </div>
                                     </div>
@@ -306,8 +307,9 @@
                                         <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
                                         <div class="media-body">
                                             <span class="name">Debra Stewart <small
-                                                        class="float-right">38min ago</small></span>
-                                            <span class="message">Many desktop publishing packages and web page editors</span>
+                                                    class="float-right">38min ago</small></span>
+                                            <span
+                                                class="message">Many desktop publishing packages and web page editors</span>
                                             <span class="badge badge-outline status"></span>
                                         </div>
                                     </div>
@@ -319,7 +321,7 @@
                                         <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
                                         <div class="media-body">
                                             <span class="name">Susie Willis <small
-                                                        class="float-right">2hr ago</small></span>
+                                                    class="float-right">2hr ago</small></span>
                                             <span class="message">Contrary to belief, Lorem Ipsum is not simply random text</span>
                                             <span class="badge badge-outline status"></span>
                                         </div>
@@ -332,7 +334,7 @@
                                         <img class="media-object " src="../assets/images/xs/avatar1.jpg" alt="">
                                         <div class="media-body">
                                             <span class="name">Folisise Chosielie <small
-                                                        class="float-right">2hr ago</small></span>
+                                                    class="float-right">2hr ago</small></span>
                                             <span class="message">There are many of passages of available, but the majority</span>
                                             <span class="badge badge-outline status"></span>
                                         </div>
@@ -345,8 +347,9 @@
                                         <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
                                         <div class="media-body">
                                             <span class="name">Marshall Nichols <small
-                                                        class="float-right">1day ago</small></span>
-                                            <span class="message">It is a long fact that a reader will be distracted</span>
+                                                    class="float-right">1day ago</small></span>
+                                            <span
+                                                class="message">It is a long fact that a reader will be distracted</span>
                                             <span class="badge badge-outline status"></span>
                                         </div>
                                     </div>
@@ -363,7 +366,7 @@
         <div class="navbar-brand">
             <a href="/"><img src="../assets/images/icon-dark.svg" alt="SpeedShop Logo" class="img-fluid logo"><span>SpeedShop</span></a>
             <button type="button" class="btn-toggle-offcanvas btn btn-sm btn-default float-right"><i
-                        class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
+                    class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
         </div>
         <div class="sidebar-scroll">
             <div class="user-account">
@@ -388,21 +391,21 @@
                 <ul id="main-menu" class="metismenu">
                     <li class="active"><a href="index"><i class="icon-home"></i><span>Dashboard</span></a></li>
                     <li><a href="{{ route('admin.users.index') }}" class="has-arrow"><i
-                                    class="icon-book-open"></i><span>Users</span></a>
+                                class="icon-book-open"></i><span>Users</span></a>
                         <ul>
                             <li><a href="{{ route('admin.users.index') }}" class="custom_content"><i
-                                            class="fa fa-users"></i> List</a></li>
+                                        class="fa fa-users"></i> List</a></li>
                             <li><a href="{{ route('admin.users.index') }}" class="custom_content"><i
-                                            class="icon-users"></i> List</a></li>
+                                        class="icon-users"></i> List</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('admin.order.index') }}" class="has-arrow"><i
-                                    class="icon-book-open"></i><span>Orders</span></a>
+                                class="icon-book-open"></i><span>Orders</span></a>
                         <ul>
                             <li><a href="{{ route('admin.order.index') }}" class="custom_content"><i
-                                            class="fa fa-users"></i> List</a></li>
+                                        class="fa fa-users"></i> List</a></li>
                             <li><a href="{{ route('admin.users.index') }}" class="custom_content"><i
-                                            class="icon-users"></i> List</a></li>
+                                        class="icon-users"></i> List</a></li>
                         </ul>
                     </li>
                     <li>
@@ -427,7 +430,8 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#uiElements" class="has-arrow"><i class="icon-size-actual"></i><span>Attribute</span></a>
+                        <a href="#uiElements" class="has-arrow"><i
+                                class="icon-size-actual"></i><span>Attribute</span></a>
                         <ul>
                             <li><a href="{{ route('admin.attributes.index') }}">All</a></li>
                             <li><a href="{{ route('admin.attributes.create') }}">Create</a></li>
@@ -453,8 +457,15 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="{{ route('admin.menu.index') }}" class="has-arrow"><i
+                                class="icon-globe"></i><span>Menu</span></a>
+                        <ul>
+                            <li><a href="{{ route('admin.blogs.index') }}">Menu List</a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.contacts.edit', 'contacts') }}" class=""><i
-                                    class="icon-envelope"></i><span>Contacts</span></a>
+                                class="icon-envelope"></i><span>Contacts</span></a>
                     </li>
 
                 </ul>
