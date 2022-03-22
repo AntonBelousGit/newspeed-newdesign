@@ -2,11 +2,25 @@
 
 namespace App\Http\Controllers\Admin\Menu;
 
+use App\Helpers\StorageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
+use App\Service\MenuService;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+    private $storage;
+    protected $menuService;
+
+    public function __construct(Request $request, MenuService $menuService)
+    {
+        $this->menuService = $menuService;
+        $menu_id = $request->route('menu');
+        $this->storage = new StorageHelper('image', 'menus', $request->file('file'), Menu::find($menu_id));
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +28,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $menus = $this->menuService->getMenuItem();
+        return view('admin.menu.index',compact('menus'));
     }
 
     /**

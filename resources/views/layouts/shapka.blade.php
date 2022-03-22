@@ -460,7 +460,7 @@
                         <a href="{{ route('admin.menu.index') }}" class="has-arrow"><i
                                 class="icon-globe"></i><span>Menu</span></a>
                         <ul>
-                            <li><a href="{{ route('admin.blogs.index') }}">Menu List</a></li>
+                            <li><a href="{{ route('admin.menu.index') }}">Menu List</a></li>
                         </ul>
                     </li>
                     <li>
