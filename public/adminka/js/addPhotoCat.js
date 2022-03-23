@@ -54,4 +54,22 @@ $(function() {
             })
         }
     });
+    // склик по input-image
+    $('.imgInp').change(function(){
+        var imgDiv=$(this).data('id');
+        imgDiv=$('#' + imgDiv);
+        ImageSetter(this,imgDiv);
+    });
+
 });
+// функция подстановки картинки
+function ImageSetter(input,target) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            target.attr('src', e.target.result);
+            target.parent('picture').find('source').attr('srcset', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
