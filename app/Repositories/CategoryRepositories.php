@@ -34,6 +34,10 @@ class CategoryRepositories extends CoreRepository
     {
         return $this->startCondition()->where('id', '!=', $id)->get();
     }
+    public function getCategoryWithChildrenBySlug($slug)
+    {
+        return $this->startCondition()->where('slug', $slug)->with('childrenCategories')->first();
+    }
 
     public function getCategoryById($id)
     {

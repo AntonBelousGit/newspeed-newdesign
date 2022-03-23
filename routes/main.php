@@ -19,12 +19,11 @@ Route::group([
     Route::match(['get', 'post'], 'galleries/save_click_on_main_slider_href', [GalleriesController::class, 'save_click_on_main_slider_href'])->name('galleries.save_click_on_main_slider_href');
 
     // категория каталога товаров
-    Route::get('category/{category:slug}', [CatalogController::class, 'category'])
-        ->name('category');
+
 
 
     // страница товара каталога
-    Route::get('product/{slug}', [CatalogController::class, 'product'])->name('product');
+
 
 //    Route::get('cart', [OrderController::class, 'index'])->name('cart');
 //
@@ -34,8 +33,11 @@ Route::group([
 //
 //    Route::delete('remove-from-cart', [OrderController::class, 'removeFromCart'])->name('remove.from.cart');
 //    Route::resource('/order', OrderController::class);
-
 });
+
+Route::get('/{slug}', [CatalogController::class, 'product'])->name('product');
+Route::get('category/{slug}', [CatalogController::class, 'category'])->name('category');
+
 
 Route::group(['prefix'=>'cart'],function (){
     Route::get('/', [CartController::class, 'cart'])->name('cart');

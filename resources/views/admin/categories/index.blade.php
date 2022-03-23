@@ -58,6 +58,7 @@
                                     <tr>
                                         <th>Название</th>
                                         <th>Родительская категория</th>
+                                        <th>Slug</th>
                                         <th>Изображение</th>
                                         <th>Действие</th>
                                     </tr>
@@ -66,6 +67,7 @@
                                     <tr>
                                         <th>Название</th>
                                         <th>Родительская категория</th>
+                                        <th>Slug</th>
                                         <th>Изображение</th>
                                         <th>Действие</th>
                                     </tr>
@@ -78,6 +80,7 @@
                                                 {{$item->categoriesParent->name ?? '---'}}
 
                                             </td>
+                                            <td>{{$item->slug}}</td>
                                             <td><img src="{{asset('assets/uploads/category')}}/{{$item->image}}"
                                                      alt="img" style="width: 160px;"></td>
                                             <td class="actions">

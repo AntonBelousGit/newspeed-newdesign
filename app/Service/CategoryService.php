@@ -32,6 +32,9 @@ class CategoryService
     public function getCategoryById($id) {
         return $this->categoryRepositories->getCategoryById($id);
     }
+    public function getCategoryWithChildrenBySlug($slug){
+        return $this->categoryRepositories->getCategoryWithChildrenBySlug($slug);
+    }
 
     public function storeCategory($validated_data)
     {

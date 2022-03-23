@@ -57,6 +57,7 @@
                                     <thead>
                                     <tr>
                                         <th>Название</th>
+                                        <th>Slug</th>
                                         <th>Категория</th>
                                         <th>Цена</th>
                                         <th>Фото</th>
@@ -69,6 +70,7 @@
                                     <tfoot>
                                     <tr>
                                         <th>Название</th>
+                                        <th>Slug</th>
                                         <th>Категория</th>
                                         <th>Цена</th>
                                         <th>Фото</th>
@@ -84,6 +86,7 @@
 
                                         <tr class="gradeA">
                                             <td>{{$item->name}}</td>
+                                            <td>{{$item->slug}}</td>
                                             <td>{{$item->category->name ?? '-------------------------------'}}</td>
                                             <td>{{$item->regular_price}}</td>
                                             <td><img src="{{asset('assets/uploads/products')}}/{{$item->image}}" alt="img" style="width: 160px;"></td>

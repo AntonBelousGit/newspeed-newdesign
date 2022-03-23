@@ -36,5 +36,6 @@
 @yield('script')
 @yield('scripts')
 @include('layouts.script')
+@include('components.mobile-nav')
 </body>
 </html>

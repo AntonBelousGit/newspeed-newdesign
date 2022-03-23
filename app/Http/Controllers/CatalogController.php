@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Service\AttributeService;
 use App\Service\BrandService;
+use App\Service\CategoryService;
 use App\Service\ProductService;
 use Illuminate\Http\Request;
 
@@ -20,17 +21,22 @@ class CatalogController extends Controller
     protected $productService;
     protected $attributeService;
     protected $brandService;
+    protected $categoryService;
 
-    public function __construct(ProductService $productService, AttributeService $attributeService, BrandService $brandService)
+    public function __construct(ProductService $productService, AttributeService $attributeService, BrandService $brandService, CategoryService $categoryService)
     {
         $this->productService = $productService;
         $this->attributeService = $attributeService;
         $this->brandService = $brandService;
+        $this->categoryService = $categoryService;
     }
 
-    public function category(Category $category, FilterRequest $request, SetFilterAction $action, GetFilteredProductAction $actionProduct)
+    public function category($slug, FilterRequest $request, SetFilterAction $action, GetFilteredProductAction $actionProduct)
     {
         $data = $request->all();
+
+        $category = $this->categoryService->getCategoryWithChildrenBySlug($slug);
+
         $data['category_id'] = $category->id;
         $products = $actionProduct->handle($action->handle(ProductFilter::class, $data));
 

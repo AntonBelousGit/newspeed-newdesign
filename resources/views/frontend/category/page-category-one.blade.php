@@ -12,18 +12,17 @@
                     @if (isset($category->categoriesParent))
                         <li>
                             <i class="text-r icon-arrow"></i>
-                            <a class="text-r" href="{{route('catalog.category',['category'=>$category->categoriesParent->slug])}}">{{$category->categoriesParent->name}}</a>
+                            <a class="text-r" href="{{route('category',['slug'=>$category->categoriesParent->slug])}}">{{$category->categoriesParent->name}}</a>
                         </li>
                     @endif
                     <li>
                         <i class="text-r icon-arrow"></i>
-                        <a class="text-r" href="{{route('catalog.category',['category'=>$category->slug])}}">{{$category->name}}</a>
+                        <a class="text-r" href="{{route('category',['slug'=>$category->slug])}}">{{$category->name}}</a>
                     </li>
 
                 </ul>
             </div>
         </div>
-{{--        @dd($category->categoriesParent)--}}
         <div class="container">
             <h2 class="title-i">Электросамокаты</h2>
         </div>
@@ -43,18 +42,17 @@
                         <div class="polzunok-5 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
                     </div>
                 </div>
-                @foreach($brands as $item)
-                    @php
-                        $item['type'] = 'brand_id';
-                    @endphp
-                @dd($item)
-                    <div class="philters-box">
-                        <h5 class="text-r text-r-xl blue-t">Бренды</h5>
-                        <div class="philters-check-box">
-                            @each('frontend.category.components.filterStatic', $item, 'item', 'components.galleries.empty')
-                        </div>
-                    </div>
-                @endforeach
+{{--                @foreach($brands as $item)--}}
+{{--                    @php--}}
+{{--                        $item['type'] = 'brand_id';--}}
+{{--                    @endphp--}}
+{{--                    <div class="philters-box">--}}
+{{--                        <h5 class="text-r text-r-xl blue-t">Бренды</h5>--}}
+{{--                        <div class="philters-check-box">--}}
+{{--                            @each('frontend.category.components.filterStatic', $item, 'item', 'components.galleries.empty')--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
 
                 @foreach($filter_attribute as $item)
                     <div class="philters-box">

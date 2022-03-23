@@ -1,4 +1,4 @@
-<a href="{{route('catalog.category',['category'=>$item->slug])}}" class="ltp_item">
+<a href="{{route('category',['slug'=>$item->slug])}}" class="ltp_item">
     <div class="wrap_img">
         <picture>
             <source srcset="{{asset('assets/uploads/category/')}}/{{$item->image}}" type="image/webp">
