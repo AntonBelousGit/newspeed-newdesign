@@ -59,7 +59,7 @@
                     <div class="wrap_panel_icons">
                         <a href="#" class="icon icon_user"></a>
                         <a href="#" class="icon icon_scales"><span>28</span></a>
-                        <a href="#" class="icon icon_heart"><span>28</span></a>
+                        <a href="{{ route('wishlist') }}" class="icon icon_heart"><span>28</span></a>
                         <a href="#" class="icon icon_basket"><span>28</span></a>
                     </div>
                 </div>

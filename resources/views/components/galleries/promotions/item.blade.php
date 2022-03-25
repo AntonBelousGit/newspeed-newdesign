@@ -25,7 +25,7 @@
             <span class="rating rating-active"></span>
             <span class="rating"></span>
         </div>
-        <a href="{{ route("catalog.product", $item->slug) }}" class=" text-r text-r-m">{{ $item->name }}
+        <a href="{{ route("product", $item->slug) }}" class=" text-r text-r-m">{{ $item->name }}
         </a>
         <span class="label label-new">Новинка</span>
     </div>

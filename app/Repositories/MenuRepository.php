@@ -18,10 +18,10 @@ class MenuRepository extends CoreRepository
     }
     public function getMenuItemParentShort()
     {
-        return $this->startCondition()->orderBy('sort','desc')->whereNull('menu_id')->get(['id','name']);
+        return $this->startCondition()->orderBy('sort','desc')->whereNull('menu_id')->where('status',1)->get(['id','name']);
     }
     public function getMenuItemParentWithChildren()
     {
-        return $this->startCondition()->orderBy('sort','desc')->whereNull('menu_id')->with('children')->get();
+        return $this->startCondition()->orderBy('sort','desc')->whereNull('menu_id')->where('status',1)->with('children')->get();
     }
 }

@@ -39,7 +39,7 @@ class ProductService
         return $this->productRepositories->getProductWithAttributeByID($id);
     }
 
-    public function getProductWithAttributeBySLUG(string $slug): Model
+    public function getProductWithAttributeBySLUG(string $slug)
     {
         return $this->productRepositories->getProductWithAttributeBySLUG($slug);
     }
