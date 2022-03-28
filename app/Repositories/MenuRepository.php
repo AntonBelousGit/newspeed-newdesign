@@ -24,4 +24,9 @@ class MenuRepository extends CoreRepository
     {
         return $this->startCondition()->orderBy('sort','desc')->whereNull('menu_id')->where('status',1)->with('children')->get();
     }
+
+    public function getMenuById($id)
+    {
+        return $this->startCondition()->find($id);
+    }
 }

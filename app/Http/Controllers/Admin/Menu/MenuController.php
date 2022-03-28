@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Menu;
 use App\Helpers\StorageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Menu\MenuStoreRequest;
+use App\Http\Requests\PhotoRequest;
 use App\Models\Menu;
 use App\Service\MenuService;
 use Illuminate\Contracts\Foundation\Application;
@@ -12,17 +13,15 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Throwable;
 
 class MenuController extends Controller
 {
-    private $storage;
     protected $menuService;
 
-    public function __construct(Request $request, MenuService $menuService)
+    public function __construct(MenuService $menuService)
     {
         $this->menuService = $menuService;
-        $menu_id = $request->route('menu');
-        $this->storage = new StorageHelper('image', 'menus', $request->file('file'), Menu::find($menu_id));
     }
 
 
@@ -105,5 +104,40 @@ class MenuController extends Controller
     {
         $menu->delete();
         return redirect()->route('admin.menu.index');
+    }
+
+
+    public function addPhoto(PhotoRequest $request)
+    {
+        $request->validated();
+        $file = $request->file('photo');
+        $ext = $file->getClientOriginalExtension();
+        $filename = time() . '.' . $ext;
+        $file->move('assets/uploads/menu', $filename);
+
+        return response()->json([
+            'filename' => $filename,
+        ]);
+    }
+
+    public function removePhoto(PhotoRequest $request)
+    {
+        $request->validated();
+
+        try {
+            $cat = $this->menuService->getMenuById($request->id);
+            if ($cat) {
+                $cat->image = null;
+                $cat->save();
+            }
+        } catch (Throwable $e) {
+            report($e);
+            abort(500);
+        }
+
+        return response()->json([
+            'result' => true,
+            'message' => 'You have deleted image successfully'
+        ]);
     }
 }

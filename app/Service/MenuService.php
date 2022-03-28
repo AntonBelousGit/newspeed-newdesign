@@ -21,6 +21,10 @@ class MenuService
     {
         return $this->menuRepository->getMenuItem();
     }
+    public function getMenuById($id)
+    {
+        return $this->menuRepository->getMenuById($id);
+    }
 
     public function getMenuItemParentShort()
     {

@@ -81,34 +81,34 @@
                                            required value="{{$menu->sort}}" style="max-width: 300px">
                                 </div>
                                 <div class="form-group">
-                                    <label>Главная картинка</label>
-                                    <div class="gallery-single" data-id="">
+                                    <label>ICON</label>
+                                    <div class="gallery-single" data-id="{{$menu->id}}">
                                         <div class="row">
+                                            {{--                                                                        {{dd($images)}}--}}
+                                            @if(!is_null($menu->icon))
+                                                <div class="col-md-3">
+                                                    <a href="{{asset('assets/uploads/menu')}}/{{$menu->icon}}"
+                                                       class="img-gallery-box" data-fancybox="images" data-width="1200"
+                                                       style="background-image: url(/assets/uploads/menu/{{$menu->icon}}); background-repeat: no-repeat"
+                                                       onclick="event.preventDefault()">
+                                                        <div class="trash-block" data-url="{{$menu->icon}}"
+                                                             onclick="removePhoto(this,this.getAttribute('data-url'));return false;"></div>
+                                                    </a>
+                                                    <input type="hidden" name="image" value="{{$menu->icon}}">
+                                                </div>
+                                            @endif
+                                            @error('image')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                             <div class="col-md-3">
-                                                <label>Иконка</label>
-                                                <label for="addSinglePhotoInput" class="add-photo"
-                                                       style="width: 230px; height: 130px; padding-top: 0">
+                                                <label for="addSinglePhotoInput" class="add-photo">
                                                     <input type="file" name="file" id="addSinglePhotoInput"
                                                            class="input-file-hidden">
                                                     <div class="add-photo-title text-center">
-                                                        <img src="http://127.0.0.1:8000/img/plus.svg"
-                                                             style="width: 20px;">
+                                                        <img src="{{asset('img/plus.svg')}}" style="width: 20px;">
                                                         <div class="dark-blue font-12 medium">Добавить фото</div>
                                                     </div>
                                                 </label>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Категория иконки</label>
-                                                <div class="">
-                                                    <div class="upload-image d-none">
-                                                        <input type='file' id="image" class="imgInp" data-id='img1'/>
-                                                    </div>
-                                                    <label for="image" class="wrap_image_file">
-                                                        <img id="img1"
-                                                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ81WywbibiU11fDdgiw5ZEqf4yCkx0-9rhj006mzgiOls7JaLGtO5gpus3-X7g3Xle8MY&usqp=CAU"
-                                                             alt="your image" style="width: 230px; height: 130px"/>
-                                                    </label>
-                                                </div>
                                             </div>
                                         </div>
                                         <div id="photo-error-message" class="error-message mb-1"></div>

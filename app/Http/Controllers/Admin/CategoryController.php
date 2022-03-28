@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\CategoryByNameRequest;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\PhotoRequest;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Service\CategoryService;
 use Throwable;
@@ -100,7 +102,14 @@ class CategoryController extends Controller
 
         return response()->json([
             'result' => true,
-            'message' => 'You have deleted image successfuly'
+            'message' => 'You have deleted image successfully'
         ]);
+    }
+
+    public function searchByName(CategoryByNameRequest $request)
+    {
+        $data = $request->validated();
+        $categories = $this->categoryService->getCategoryByName($data['search']);
+        return CategoryResource::collection($categories);
     }
 }

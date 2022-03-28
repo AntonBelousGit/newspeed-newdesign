@@ -10,13 +10,11 @@ class MenuStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:100',
-            'type' => 'required',
             'slug' => 'required',
             'sort' => 'integer',
             'menu_id' => 'required',
             'status' => 'required',
-            'icon' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1024',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:3000',
+            'icon' => 'required',
         ];
     }
 
