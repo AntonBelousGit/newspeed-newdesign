@@ -22,10 +22,9 @@ class CreateMenusTable extends Migration
             $table->unsignedBigInteger('menu_id')->nullable();
             $table->boolean('status')->default(true);
             $table->string('icon')->nullable();
-            $table->string('image')->nullable();
             $table->timestamps();
 
-            $table->foreign('menu_id')->references('id')->on('menus');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
 
 
         });

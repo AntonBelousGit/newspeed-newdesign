@@ -44,8 +44,15 @@ class CategoryRepositories extends CoreRepository
         return $this->startCondition()->find($id);
     }
 
+    public function getCategoryByName($name)
+    {
+        return $this->startCondition()->where('name','like','%'.$name.'%')->get('name','slug');
+    }
+
     public function getCategoryWithParent()
     {
         return $this->startCondition()->with('categoriesParent')->orderByDesc('created_at')->get();
     }
+
+
 }

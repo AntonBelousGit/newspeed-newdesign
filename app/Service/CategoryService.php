@@ -62,6 +62,11 @@ class CategoryService
         return $this->categoryRepositories->getAllCategoryWithoutCurentID($id);
     }
 
+    public function getCategoryByName($name)
+    {
+        return $this->categoryRepositories->getCategoryByName($name);
+    }
+
     public function save_category_image($request)
     {
 //        dd($request);
