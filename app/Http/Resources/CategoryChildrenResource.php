@@ -15,7 +15,6 @@ class CategoryChildrenResource extends JsonResource
      */
     public function toArray($request)
     {
-        dd($request->all());
         return [
             'id' => $this->id,
             'name' => $this->name,
