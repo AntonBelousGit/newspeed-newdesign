@@ -72,7 +72,7 @@
                                     <tbody>
                                     @foreach($categories as $item)
                                         <tr class="gradeA" data-id="{{$item->id}}" onclick="activeItem(this)">
-                                            <td class="dt-control">
+                                            <td class="dt-control" data-id="{{$item->id}}">
                                                 <div>
                                                     {{$item->name}}
                                                 </div>
@@ -146,7 +146,7 @@
     }
 
     .subtable td:nth-child(1) {
-        width: 37%;
+        width: 31.7%;
         padding: 0 0 0 30px;
     }
 
@@ -179,11 +179,11 @@
     }
 
     .subtable td:nth-child(2) {
-        width: 33%;
+       width: 38.1%;
     }
 
     .subtable2 td:nth-child(1) {
-        width: 37%;
+        width: 31.7%;
         padding: 0 0 0 60px;
     }
 </style>
@@ -200,9 +200,51 @@
                 stateSave: true
             });
 
-            $('#table_id tbody').on('click', 'td.dt-control', function () {
+            $('#table_id tbody').on('click', 'td.dt-control', async function () {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
+                var result = [];
+                var dataId = $(tr).attr('data-id');
+                let token = '{{csrf_token()}}'
+                await $.ajax({
+                    type: "POST",
+                    url: "{{route('admin.category.searchChildrenByParent')}}",
+                    data: {
+                        id: dataId,
+                        _token: token
+                    },
+                    success: function(response) {
+                        result = response.data
+                    }
+                })
+                // `d` is the original data object for the row
+                var str = '<table class="subtable" cellspacing="0">';
+                if(result.length > 0) {
+                    for(let i = 0; i < result.length; i++) {
+                        str = str + '<tr role="row" data-id="' + result[i].id + '" onclick="addSubCategory(this)">' +
+                                        '<td class="sorting_1" colspan="1" rowspan="1" onclick="addSubCategory"><div>' + result[i].name +'</div></td>' +
+                                        '<td colspan="1" rowspan="1">1</td>' +
+                                        '<td class="actions" colspan="1" rowspan="1">' +
+                                        '<a href="http://127.0.0.1:8000/admin/categories/'+ result[i].id +'/edit"' +
+                                        'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
+                                        'data-toggle="tooltip" data-original-title="Edit"><i ' +
+                                        'class="icon-pencil" aria-hidden="true"></i></a>' +
+                                        '<form action="http://127.0.0.1:8000/admin/categories/'+ result[i].id + '"' +
+                                        'class="d-inline" method="POST">' +
+                                        '<input type="hidden" name="_token" value="'+ token + '">' +
+                                        '<input type="hidden" name="_method" value="DELETE">' +
+                                        '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
+                                        'data-toggle="tooltip" data-original-title="Remove"><i ' +
+                                        'class="icon-trash" aria-hidden="true"></i></button>' +
+                                        '</form>' +
+                                        '</td>' +
+                                        '</tr>'
+
+                    }
+                    console.log(str)
+                }
+                str = str + '</table>';
+
 
                 if (row.child.isShown()) {
                     // This row is already open - close it
@@ -210,7 +252,8 @@
                     tr.removeClass('shown');
                 } else {
                     // Open this row
-                    row.child(format(row.data())).show();
+                    row = row.child(format(row.data(), str))
+                    row.show()
                     tr.addClass('shown');
                 }
             });
@@ -218,103 +261,53 @@
 
         });
 
-        function addSubCategory(elem) {
+        async function addSubCategory(elem) {
+
             if (!($(elem).hasClass('open'))) {
-                $(elem).after($('<tr role="row" >' +
-                    '<td colspan="3">' +
-                    '<table class="subtable2" cellspacing="0">' +
-                    '<tr role="row">' +
-                    '<td class="sorting_1" colspan="1" rowspan="1">Техника для дома 1_133</td>' +
-                    '<td colspan="1" rowspan="1">1</td>' +
-                    '<td class="actions" colspan="1" rowspan="1">' +
-                    '<a href=""' +
-                    'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
-                    'data-toggle="tooltip" data-original-title="Edit"><i ' +
-                    'class="icon-pencil" aria-hidden="true"></i></a>' +
-                    '<a href=""' +
-                    'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"' +
-                    'data-toggle="tooltip" data-original-title="Banner"><i ' +
-                    'class="icon-picture" aria-hidden="true"></i></a>' +
-                    '<form action=""' +
-                    'class="d-inline" method="POST">' +
-                    '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
-                    'data-toggle="tooltip" data-original-title="Remove"><i ' +
-                    'class="icon-trash" aria-hidden="true"></i></button>' +
-                    '</form>' +
-                    '</td>' +
-                    '</tr>' +
-                    '<tr role="row">' +
-                    '<td class="sorting_1" colspan="1" rowspan="1">Техника для дома 1_23</td>' +
-                    '<td colspan="1" rowspan="1">1</td>' +
-                    '<td class="actions" colspan="1" rowspan="1">' +
-                    '<a href=""' +
-                    'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
-                    'data-toggle="tooltip" data-original-title="Edit"><i ' +
-                    'class="icon-pencil" aria-hidden="true"></i></a>' +
-                    '<a href=""' +
-                    'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"' +
-                    'data-toggle="tooltip" data-original-title="Banner"><i ' +
-                    'class="icon-picture" aria-hidden="true"></i></a>' +
-                    '<form action=""' +
-                    'class="d-inline" method="POST">' +
-                    '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
-                    'data-toggle="tooltip" data-original-title="Remove"><i ' +
-                    'class="icon-trash" aria-hidden="true"></i></button>' +
-                    '</form>' +
-                    '</td>' +
-                    '</tr>' +
-                    '</table>' +
-                    '</td>' +
-                    '</tr>'))
+                var result = []
+                let id = $(elem).attr('data-id')
+                let token = '{{csrf_token()}}'
+                await $.ajax({
+                    type: "POST",
+                    url: "{{route('admin.category.searchChildrenByParent')}}",
+                    data: {
+                        id: id,
+                        _token: token
+                    },
+                    success: function(response) {
+                        result = response.data
+                    }
+                })
+                var str = '<tr role="row" ><td colspan="3"><table class="subtable2" cellspacing="0">';
+                if(result.length > 0) {
+                    for(let i = 0; i < result.length; i++) {
+                        str = str + '<tr role="row" data-id="' + result[i].id + '">' +
+                        '<td class="sorting_1" colspan="1" rowspan="1">'+ result[i].name +'</td>' +
+                        '<td colspan="1" rowspan="1">1</td>' +
+                        '<td class="actions" colspan="1" rowspan="1">' +
+                        '<a href="http://127.0.0.1:8000/admin/categories/'+ result[i].id + '/edit"' +
+                        'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
+                        'data-toggle="tooltip" data-original-title="Edit"><i ' +
+                        'class="icon-pencil" aria-hidden="true"></i></a>' +
+                        '<form action="" class="d-inline" method="POST">' +
+                        '<input type="hidden" name="_token" value="'+ token + '">' +
+                        '<input type="hidden" name="_method" value="DELETE">' +
+                        '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
+                        'data-toggle="tooltip" data-original-title="Remove"><i ' +
+                        'class="icon-trash" aria-hidden="true"></i></button>' +
+                        '</form>' +
+                        '</td>' +
+                        '</tr>'
+                    }
+                }
+                str = str + '</table></td></tr>';
+                $(elem).after($(str))
                 $(elem).addClass('open')
-            } else {
             }
         }
 
-        function format(d) {
-            // `d` is the original data object for the row
-            return '<table class="subtable" cellspacing="0">' +
-                '<tr role="row" onclick="addSubCategory(this)">' +
-                '<td class="sorting_1" colspan="1" rowspan="1" onclick="addSubCategory"><div>Техника для дома 1</div></td>' +
-                '<td colspan="1" rowspan="1">1</td>' +
-                '<td class="actions" colspan="1" rowspan="1">' +
-                '<a href=""' +
-                'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
-                'data-toggle="tooltip" data-original-title="Edit"><i ' +
-                'class="icon-pencil" aria-hidden="true"></i></a>' +
-                '<a href=""' +
-                'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"' +
-                'data-toggle="tooltip" data-original-title="Banner"><i ' +
-                'class="icon-picture" aria-hidden="true"></i></a>' +
-                '<form action=""' +
-                'class="d-inline" method="POST">' +
-                '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
-                'data-toggle="tooltip" data-original-title="Remove"><i ' +
-                'class="icon-trash" aria-hidden="true"></i></button>' +
-                '</form>' +
-                '</td>' +
-                '</tr>' +
-                '<tr role="row" onclick="addSubCategory(this)">' +
-                '<td class="sorting_1" colspan="1" rowspan="1">Техника для дома 2</td>' +
-                '<td colspan="1" rowspan="1">1</td>' +
-                '<td class="actions" colspan="1" rowspan="1">' +
-                '<a href=""' +
-                'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
-                'data-toggle="tooltip" data-original-title="Edit"><i ' +
-                'class="icon-pencil" aria-hidden="true"></i></a>' +
-                '<a href=""' +
-                'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"' +
-                'data-toggle="tooltip" data-original-title="Banner"><i ' +
-                'class="icon-picture" aria-hidden="true"></i></a>' +
-                '<form action=""' +
-                'class="d-inline" method="POST">' +
-                '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
-                'data-toggle="tooltip" data-original-title="Remove"><i ' +
-                'class="icon-trash" aria-hidden="true"></i></button>' +
-                '</form>' +
-                '</td>' +
-                '</tr>' +
-                '</table>';
+        function format(d, str) {
+            return str;
         }
     </script>
 @endsection

@@ -119,6 +119,7 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
         $categories = $this->categoryService->searchChildrenByParent($data['id']);
+
         return CategoryChildrenResource::collection($categories);
     }
 }
