@@ -191,6 +191,34 @@
 
                             console.log(response.data)
 
+                            var myDiv = document.getElementById("myDiv");
+
+//Create array of options to be added
+                            var array = ["Volvo","Saab","Mercades","Audi"];
+
+                            var selectList = document.createElement("select");
+                            selectList.setAttribute("id", "mySelect","multiple");
+
+
+                            myDiv.appendChild(selectList);
+                            let element7 =  document.createElement("select");
+                            element7.setAttribute('multiple', '');
+                            let optarr =  ['vat1','vat2','vat3','vat4','vat5','vat6'];
+                            element7.setAttribute('size', optarr.length);
+                            element7.setAttribute('style', 'overflow-y: auto');
+                            for(let i = 0;i<optarr.length;i++)
+                            {
+                                let opt = document.createElement("option");
+                                opt.text = optarr[i];
+                                opt.value = optarr[i];
+                                opt.className = optarr[i];
+                                element7.appendChild(opt);
+                            }
+
+                            let container = document.getElementById('container');
+                            container.appendChild(element7);
+
+                            // $("#display").html(response).show();
                         }
 
                     });
