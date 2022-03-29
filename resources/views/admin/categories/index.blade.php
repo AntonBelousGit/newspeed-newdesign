@@ -57,53 +57,66 @@
                                     <thead>
                                     <tr>
                                         <th>Название</th>
-                                        <th>Родительская категория</th>
-                                        <th>Slug</th>
-                                        <th>Изображение</th>
+                                        <th>The sort order</th>
                                         <th>Действие</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>Название</th>
-                                        <th>Родительская категория</th>
-                                        <th>Slug</th>
-                                        <th>Изображение</th>
+                                        <th>The sort order</th>
                                         <th>Действие</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($categories as $item)
-                                        <tr class="gradeA">
-                                            <td>{{$item->name}}</td>
-                                            <td>
-                                                {{$item->categoriesParent->name ?? '---'}}
-
+                                        <tr class="gradeA" onclick="activeItem(this)">
+                                            <td class="dt-control">
+                                                <div>
+                                                    Техника для дома
+                                                </div>
                                             </td>
-                                            <td>{{$item->slug}}</td>
-                                            <td><img src="{{asset('assets/uploads/category')}}/{{$item->image}}"
-                                                     alt="img" style="width: 160px;"></td>
+                                            <td>1</td>
                                             <td class="actions">
-                                                <a href="{{route('admin.categories.edit', $item )}}"
+                                                <a href=""
                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
                                                    data-toggle="tooltip" data-original-title="Edit"><i
                                                             class="icon-pencil" aria-hidden="true"></i></a>
-
-                                                <form action="{{route('admin.categories.destroy',$item)}}"
+                                                <a href=""
+                                                   class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"
+                                                   data-toggle="tooltip" data-original-title="Banner"><i
+                                                            class="icon-picture" aria-hidden="true"></i></a>
+                                                <form action=""
                                                       class="d-inline" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
                                                     <button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
                                                             data-toggle="tooltip" data-original-title="Remove"><i
                                                                 class="icon-trash" aria-hidden="true"></i></button>
                                                 </form>
-                                                <a href="{{route('admin.banners.create', ['model' =>'Category', 'name' =>$item->name, 'model_id' => $item->id] )}}"
+                                            </td>
+                                        </tr>
+                                        <tr class="gradeA" onclick="activeItem(this)">
+                                            <td class="dt-control">
+                                                <div>
+                                                    Техника для дома
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td class="actions">
+                                                <a href=""
+                                                   class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
+                                                   data-toggle="tooltip" data-original-title="Edit"><i
+                                                            class="icon-pencil" aria-hidden="true"></i></a>
+                                                <a href=""
                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"
                                                    data-toggle="tooltip" data-original-title="Banner"><i
                                                             class="icon-picture" aria-hidden="true"></i></a>
+                                                <form action=""
+                                                      class="d-inline" method="POST">
+                                                    <button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
+                                                            data-toggle="tooltip" data-original-title="Remove"><i
+                                                                class="icon-trash" aria-hidden="true"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
-                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -115,13 +128,215 @@
     </div>
 @endsection
 
+<style>
+
+#table_id td.dt-control div:after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 8px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M6.81272 7.14577L11.1195 1.57814C11.4846 1.10564 11.0425 0.499268 10.3064 0.499268L1.69294 0.499268C0.958044 0.499268 0.514772 1.10477 0.881054 1.57814L5.18778 7.14577C5.26958 7.25325 5.38782 7.34259 5.53051 7.40474C5.6732 7.46688 5.83526 7.49961 6.00025 7.49961C6.16525 7.49961 6.32731 7.46688 6.47 7.40474C6.61268 7.34259 6.73092 7.25325 6.81272 7.14577Z' fill='%23212529'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    margin-left: 5px;
+}
+
+#table_id td.dt-control div {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #3B6D9A;
+}
+
+#table_id tr.open td.dt-control div:after {
+    display: none;
+}
+
+#table_id tr.open td.dt-control div {
+    color: #212529;
+}
+
+#table_id td[colspan="3"] {
+  padding: 0;
+}
+
+#table_id td[colspan="3"] table {
+    width: 100%;
+}
+
+.subtable td:nth-child(1) {
+    width: 37%;
+    padding: 0 0 0 30px;
+}
+
+.subtable td:nth-child(1) div:after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 8px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M6.81272 7.14577L11.1195 1.57814C11.4846 1.10564 11.0425 0.499268 10.3064 0.499268L1.69294 0.499268C0.958044 0.499268 0.514772 1.10477 0.881054 1.57814L5.18778 7.14577C5.26958 7.25325 5.38782 7.34259 5.53051 7.40474C5.6732 7.46688 5.83526 7.49961 6.00025 7.49961C6.16525 7.49961 6.32731 7.46688 6.47 7.40474C6.61268 7.34259 6.73092 7.25325 6.81272 7.14577Z' fill='%23212529'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  margin-left: 5px;
+}
+
+.subtable tr.open td:nth-child(1) div {
+    color: #212529;
+}
+
+.subtable tr.open td:nth-child(1) div:after {
+    display: none;
+}
+
+.subtable td:nth-child(1) div {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: #3B6D9A;
+}
+
+.subtable td:nth-child(2) {
+    width: 33%;
+}
+
+.subtable2 td:nth-child(1) {
+   width: 37%;
+   padding: 0 0 0 60px;
+}
+</style>
 
 @section('scripts')
     <script>
+
+        function activeItem(elem) {
+            $(elem).toggleClass('open')
+        }
+
         $(document).ready(function () {
-            $('#table_id').DataTable({
+            var table = $('#table_id').DataTable({
                 stateSave: true
             });
+
+            $('#table_id tbody').on('click', 'td.dt-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row( tr );
+
+                if ( row.child.isShown() ) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child( format(row.data()) ).show();
+                    tr.addClass('shown');
+                }
+            } );
+
+
         });
+
+        function addSubCategory (elem) {
+          if(!($(elem).hasClass('open'))) {
+            $(elem).after($('<tr role="row" >' +
+                '<td colspan="3">' +
+                '<table class="subtable2" cellspacing="0">' +
+                    '<tr role="row">' +
+                        '<td class="sorting_1" colspan="1" rowspan="1">Техника для дома 1_133</td>' +
+                        '<td colspan="1" rowspan="1">1</td>' +
+                        '<td class="actions" colspan="1" rowspan="1">' +
+                            '<a href=""' +
+                            'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
+                            'data-toggle="tooltip" data-original-title="Edit"><i ' +
+                                'class="icon-pencil" aria-hidden="true"></i></a>' +
+                            '<a href=""' +
+                            'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"' +
+                            'data-toggle="tooltip" data-original-title="Banner"><i ' +
+                                'class="icon-picture" aria-hidden="true"></i></a>' +
+                            '<form action=""' +
+                            'class="d-inline" method="POST">' +
+                            '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
+                                'data-toggle="tooltip" data-original-title="Remove"><i ' +
+                                    'class="icon-trash" aria-hidden="true"></i></button>' +
+                            '</form>' +
+                        '</td>' +
+                    '</tr>' +
+                    '<tr role="row">' +
+                        '<td class="sorting_1" colspan="1" rowspan="1">Техника для дома 1_23</td>' +
+                        '<td colspan="1" rowspan="1">1</td>' +
+                        '<td class="actions" colspan="1" rowspan="1">' +
+                            '<a href=""' +
+                            'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
+                            'data-toggle="tooltip" data-original-title="Edit"><i ' +
+                                'class="icon-pencil" aria-hidden="true"></i></a>' +
+                            '<a href=""' +
+                            'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"' +
+                            'data-toggle="tooltip" data-original-title="Banner"><i ' +
+                                'class="icon-picture" aria-hidden="true"></i></a>' +
+                            '<form action=""' +
+                            'class="d-inline" method="POST">' +
+                            '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
+                                'data-toggle="tooltip" data-original-title="Remove"><i ' +
+                                    'class="icon-trash" aria-hidden="true"></i></button>' +
+                            '</form>' +
+                        '</td>' +
+                    '</tr>' +
+                '</table>' +
+                '</td>' +
+            '</tr>'))
+            $(elem).addClass('open')
+          } else {
+          }
+        }
+
+        function format ( d ) {
+            // `d` is the original data object for the row
+            return '<table class="subtable" cellspacing="0">'+
+                '<tr role="row" onclick="addSubCategory(this)">' +
+                    '<td class="sorting_1" colspan="1" rowspan="1" onclick="addSubCategory"><div>Техника для дома 1</div></td>' +
+                    '<td colspan="1" rowspan="1">1</td>' +
+                    '<td class="actions" colspan="1" rowspan="1">' +
+                        '<a href=""' +
+                        'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
+                        'data-toggle="tooltip" data-original-title="Edit"><i ' +
+                            'class="icon-pencil" aria-hidden="true"></i></a>' +
+                        '<a href=""' +
+                        'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"' +
+                        'data-toggle="tooltip" data-original-title="Banner"><i ' +
+                            'class="icon-picture" aria-hidden="true"></i></a>' +
+                        '<form action=""' +
+                        'class="d-inline" method="POST">' +
+                        '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
+                            'data-toggle="tooltip" data-original-title="Remove"><i ' +
+                                'class="icon-trash" aria-hidden="true"></i></button>' +
+                        '</form>' +
+                    '</td>' +
+                '</tr>' +
+                '<tr role="row" onclick="addSubCategory(this)">' +
+                    '<td class="sorting_1" colspan="1" rowspan="1">Техника для дома 2</td>' +
+                    '<td colspan="1" rowspan="1">1</td>' +
+                    '<td class="actions" colspan="1" rowspan="1">' +
+                        '<a href=""' +
+                        'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +
+                        'data-toggle="tooltip" data-original-title="Edit"><i ' +
+                            'class="icon-pencil" aria-hidden="true"></i></a>' +
+                        '<a href=""' +
+                        'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"' +
+                        'data-toggle="tooltip" data-original-title="Banner"><i ' +
+                            'class="icon-picture" aria-hidden="true"></i></a>' +
+                        '<form action=""' +
+                        'class="d-inline" method="POST">' +
+                        '<button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"' +
+                            'data-toggle="tooltip" data-original-title="Remove"><i ' +
+                                'class="icon-trash" aria-hidden="true"></i></button>' +
+                        '</form>' +
+                    '</td>' +
+                '</tr>' +
+            '</table>';
+        }
     </script>
 @endsection
