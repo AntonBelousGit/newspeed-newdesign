@@ -50,12 +50,12 @@ class CategoryRepositories extends CoreRepository
 
     public function getCategoryByName($name)
     {
-        return $this->startCondition()->where('name','like','%'.$name.'%')->get('name','slug');
+        return $this->startCondition()->where('name','like','%'.$name.'%')->get(['name','slug']);
     }
 
     public function searchChildrenByParent($id)
     {
-        return $this->startCondition()->where('category_id',$id)->get('id','name','slug');
+        return $this->startCondition()->where('category_id',$id)->get(['id','name','slug']);
     }
 
     public function getCategoryWithParent()
@@ -67,6 +67,5 @@ class CategoryRepositories extends CoreRepository
     {
         return $this->startCondition()->with('childrenCategories.childrenCategories')->orderByDesc('created_at')->get();
     }
-
 
 }
