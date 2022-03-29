@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'],
         Route::post('/categories/add-photo', [CategoryController::class, 'addPhoto'])->name('category-add-photo');
         Route::post('/categories/remove-photo', [CategoryController::class, 'removePhoto'])->name('category-remove-photo');
         Route::post('/categories/search-by-name', [CategoryController::class, 'searchByName'])->name('category.search-by-name');
+        Route::post('/categories/search-children-by-id', [CategoryController::class, 'searchChildrenByParent'])->name('category.searchChildrenByParent');
 
         Route::match(['get', 'post'], '/products/move_product_to_block', [ProductController::class, 'move_product_to_block'])->name('products.move_product_to_block');
         Route::match(['get', 'post'], '/products/delete_product_from_block', [ProductController::class, 'delete_product_from_block'])->name('products.delete_product_from_block');

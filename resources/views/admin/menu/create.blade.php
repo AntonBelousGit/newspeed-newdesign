@@ -191,7 +191,6 @@
 
                             console.log(response.data)
 
-                            // $("#display").html(response).show();
                         }
 
                     });

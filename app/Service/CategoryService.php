@@ -25,8 +25,16 @@ class CategoryService
 
     public function getCategoriesWithParent()
     {
-
         return $this->categoryRepositories->getCategoryWithParent();
+    }
+
+    public function getCategoryWithChildren()
+    {
+        return $this->categoryRepositories->getCategoryWithChildren();
+    }
+    public function getAllParentCategory()
+    {
+        return $this->categoryRepositories->getAllParentCategory();
     }
 
     public function getCategoryById($id) {
@@ -65,6 +73,11 @@ class CategoryService
     public function getCategoryByName($name)
     {
         return $this->categoryRepositories->getCategoryByName($name);
+    }
+
+    public function searchChildrenByParent($id)
+    {
+        return $this->categoryRepositories->searchChildrenByParent($id);
     }
 
     public function save_category_image($request)

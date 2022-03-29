@@ -36,9 +36,9 @@
                             <h2>Список Категорий</h2>
                             <ul class="header-dropdown dropdown dropdown-animated scale-left">
                                 <li><a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i
-                                                class="icon-refresh"></i></a></li>
+                                            class="icon-refresh"></i></a></li>
                                 <li><a href="javascript:void(0);" class="full-screen"><i
-                                                class="icon-size-fullscreen"></i></a></li>
+                                            class="icon-size-fullscreen"></i></a></li>
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
                                        role="button" aria-haspopup="true" aria-expanded="false"></a>
@@ -52,7 +52,8 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table id="table_id" class="table table-bordered table-hover js-basic-example dataTable table-custom"
+                                <table id="table_id"
+                                       class="table table-bordered table-hover js-basic-example dataTable table-custom"
                                        cellspacing="0">
                                     <thead>
                                     <tr>
@@ -87,20 +88,21 @@
                                                 <a href="{{route('admin.categories.edit', $item )}}"
                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
                                                    data-toggle="tooltip" data-original-title="Edit"><i
-                                                            class="icon-pencil" aria-hidden="true"></i></a>
+                                                        class="icon-pencil" aria-hidden="true"></i></a>
 
                                                 <form action="{{route('admin.categories.destroy',$item)}}"
                                                       class="d-inline" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
-                                                            data-toggle="tooltip" data-original-title="Remove"><i
-                                                                class="icon-trash" aria-hidden="true"></i></button>
+                                                    <button
+                                                        class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
+                                                        data-toggle="tooltip" data-original-title="Remove"><i
+                                                            class="icon-trash" aria-hidden="true"></i></button>
                                                 </form>
                                                 <a href="{{route('admin.banners.create', ['model' =>'Category', 'name' =>$item->name, 'model_id' => $item->id] )}}"
                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5"
                                                    data-toggle="tooltip" data-original-title="Banner"><i
-                                                            class="icon-picture" aria-hidden="true"></i></a>
+                                                        class="icon-picture" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

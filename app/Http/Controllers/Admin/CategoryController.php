@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CategoryByNameRequest;
+use App\Http\Requests\Category\SearchChildrenByParantIdRequest;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\PhotoRequest;
+use App\Http\Resources\CategoryChildrenResource;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Service\CategoryService;
@@ -26,7 +28,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = $this->categoryService->getCategoriesWithParent();
+        $categories = $this->categoryService->getAllParentCategory();
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -111,5 +113,12 @@ class CategoryController extends Controller
         $data = $request->validated();
         $categories = $this->categoryService->getCategoryByName($data['search']);
         return CategoryResource::collection($categories);
+    }
+
+    public function searchChildrenByParent(SearchChildrenByParantIdRequest $request)
+    {
+        $data = $request->validated();
+        $categories = $this->categoryService->searchChildrenByParent($data['id']);
+        return CategoryChildrenResource::collection($categories);
     }
 }

@@ -18,10 +18,10 @@ class Category extends Model
         'status', 'slug', 'category_id', 'name', 'id', 'description', 'seo_description', 'popular', 'photo', 'recomend', 'image'
     ];
 
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
-    }
+//    public function categories()
+//    {
+//        return $this->hasMany(Category::class);
+//    }
 
     public function categoriesParent()
     {
@@ -30,7 +30,7 @@ class Category extends Model
 
     public function childrenCategories()
     {
-        return $this->hasMany(Category::class)->with('categories');
+        return $this->hasMany(Category::class);
     }
 
     public static function add($fields) // Добавление события
