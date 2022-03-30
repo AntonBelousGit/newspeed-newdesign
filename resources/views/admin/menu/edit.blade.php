@@ -22,6 +22,11 @@
                 </div>
             </div>
         </div>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <span class="text-danger">{{$error}}</span>
+            @endforeach
+        @endif
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-md-12">
@@ -44,15 +49,18 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect02">Parent menu type</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect02" name="type">
-                                        <option value="category" {{ $menu->type == 'category'? 'selected':'' }}>Category</option>
-                                        <option value="product" {{ $menu->type == 'product'? 'selected':'' }}>Product</option>
-                                        <option value="custom" {{ $menu->type == 'custom'? 'selected':'' }}>Custom</option>
+                                <div class="form-group category-search">
+                                    <label>Categories</label>
+                                    <input type="text" id="search" class="form-control">
+
+                                </div>
+                                <div class="form-group">
+                                    <select multiple style="width: 100%;" id="selectMenu" name="child_id[]">
+                                        @foreach($children_menus as $item)
+                                            <option value="{{$item->slug}}" selected>{{$item->name}}</option>
+                                        @endforeach
                                     </select>
+                                    <div class="btn btn-primary" onclick="removeOption()">Удалить выбраный пункт</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Menu item name</label>
@@ -94,7 +102,7 @@
                                                         <div class="trash-block" data-url="{{$menu->icon}}"
                                                              onclick="removePhoto(this,this.getAttribute('data-url'));return false;"></div>
                                                     </a>
-                                                    <input type="hidden" name="image" value="{{$menu->icon}}">
+                                                    <input type="hidden" name="icon" value="{{$menu->icon}}">
                                                 </div>
                                             @endif
                                             @error('image')
@@ -127,6 +135,32 @@
     </div>
 @endsection
 
+@section('style')
+    <style>
+        .hint_block {
+            border: 1px solid #DEE2E6;
+            box-sizing: border-box;
+            border-radius: 4px;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .hb_item {
+            cursor: pointer;
+            width: max-content;
+        }
+
+        .hb_item:hover {
+            color: #3B6D9A;
+        }
+
+        #selectMenu {
+            margin-bottom: 10px;
+        }
+    </style>
+@endsection
+
+
 @section('scripts')
     <script type="text/javascript">
         $.ajaxSetup({
@@ -136,8 +170,8 @@
         });
     </script>
     {{--    <script src="{{asset('adminka/js/jquery.js')}}"></script>--}}
-    <script src="{{asset('adminka/js/addPhotoCat.js')}}"></script>
-    <script src="{{asset('adminka/js/removePhotoCat.js')}}"></script>
+    <script src="{{asset('adminka/js/addPhotoMenu.js')}}"></script>
+    <script src="{{asset('adminka/js/removePhotoMenu.js')}}"></script>
     <script>
         $('#title').keyup(function () {
 
@@ -164,6 +198,85 @@
                 }
             }
             return res;
+        }
+    </script>
+    <script>
+
+        function removeOption() {
+            $('#selectMenu option:selected').remove();
+        }
+
+        function addSelect(elem) {
+            let id = $(elem).attr('id')
+            let val = $(elem).html()
+            $('#selectMenu').append('<option value="' + id + '">' + val + '</option>');
+        }
+
+        $(document).ready(function () {
+
+            // Обработчик события keyup, сработает после того как пользователь отпустит кнопку, после ввода чего-либо в поле поиска.
+            // Поле поиска из файла 'index.php' имеет id='search'
+            $("#search").keyup(function () {
+
+                // Присваиваем значение из поля поиска, переменной 'name'.
+                var name = $('#search').val();
+
+                // Проверяем если значение переменной 'name' является пустым
+                if (name === "") {
+
+                    // Если переменная 'name' имеет пустое значение, то очищаем блок div с id = 'display'
+                    $("#display").html("");
+                    $('.hint_block').remove()
+                } else {
+                    // Иначе, если переменная 'name' не пустая, то вызываем ajax функцию.
+
+                    $.ajax({
+
+                        type: "POST", // Указываем что будем обращатся к серверу через метод 'POST'
+                        url: "{{route('admin.category.search-by-name')}}", // Указываем путь к обработчику. То есть указывем куда будем отправлять данные на сервере.
+                        data: {
+                            // В этом объекте, добавляем данные, которые хотим отправить на сервер
+                            search: name, // Присваиваем значение переменной 'name', свойству 'search'.
+                            _token: '{{csrf_token()}}'
+                        },
+                        success: function (response) {
+                            // Если ajax запрос выполнен успешно, то, добавляем результат внутри div, у которого id = 'display'.
+
+                            console.log(response.data)
+                            $('.hint_block').remove();
+
+                            let mas = response.data;
+
+                            let str = '<div class="hint_block" id="display">'
+
+                            if (mas.length > 0) {
+                                for (let i = 0; i < mas.length; i++) {
+                                    str = str + '<div class="hb_item" onclick="addSelect(this)" id="' + mas[i].id + '">' + mas[i].name + '</div>'
+                                }
+                            }
+
+                            str = str + '</div>'
+
+                            $('.category-search').append($(str));
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        function fill(Value) {
+            // Функция 'fill', является обработчиком события 'click'.
+            // Она вызывается, когда пользователь кликает по элементу из результата поиска.
+
+            $('#search').val(Value); // Берем значение элемента из результата поиска и добавляем его в значение поля поиска
+
+            $('#display').hide(); // Скрываем результаты поиска
+
         }
     </script>
 @endsection

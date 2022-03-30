@@ -22,9 +22,16 @@ class MenuRepository extends CoreRepository
     }
     public function getMenuItemParentWithChildren()
     {
-        return $this->startCondition()->orderBy('sort','desc')->whereNull('menu_id')->where('status',1)->with('children')->get();
+        return $this->startCondition()->orderBy('sort','desc')->whereNull('menu_id')->where('status',1)->with('children.children')->get();
     }
-
+    public function getMenuItemWithoutCurrent($id)
+    {
+        return $this->startCondition()->orderBy('sort','desc')->where('id','!=',$id)->get(['id','name']);
+    }
+    public function getChildrenMenuItem($id)
+    {
+        return $this->startCondition()->orderBy('sort','desc')->where('menu_id',$id)->get(['id','name','slug']);
+    }
     public function getMenuById($id)
     {
         return $this->startCondition()->find($id);

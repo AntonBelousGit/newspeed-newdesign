@@ -53,11 +53,11 @@
                                 </div>
                                 <div class="form-group category-search">
                                     <label>Categories</label>
-                                    <input type="text" name="name" id="search" class="form-control" required value="">
+                                    <input type="text" id="search" class="form-control">
 
                                 </div>
                                 <div class="form-group">
-                                    <select multiple style="width: 100%;" id="selectMenu">
+                                    <select multiple style="width: 100%;" id="selectMenu" name="child_id[]">
                                     </select>
                                     <div class="btn btn-primary" onclick="removeOption()">Удалить выбраный пункт</div>
                                 </div>
@@ -88,12 +88,6 @@
                                     <input type="number" step="1" min="1" name="sort" id="title" class="form-control"
                                            required="true" value="" style="max-width: 300px">
                                 </div>
-                                <div class="form-group">
-                                    <label>Product category</label>
-                                    <input type="text" id="search" class="form-control">
-                                    <div id="display"></div>
-                                </div>
-
                                 <div class="form-group">
                                     <label>ICON</label>
                                     <div class="gallery-single" data-id="">
@@ -131,28 +125,30 @@
 
 @endsection
 
-<style>
-.hint_block {
-    border: 1px solid #DEE2E6;
-    box-sizing: border-box;
-    border-radius: 4px;
-    width: 100%;
-    padding: 10px;
-}
+@section('style')
+    <style>
+        .hint_block {
+            border: 1px solid #DEE2E6;
+            box-sizing: border-box;
+            border-radius: 4px;
+            width: 100%;
+            padding: 10px;
+        }
 
-.hb_item {
-    cursor: pointer;
-    width: max-content;
-}
+        .hb_item {
+            cursor: pointer;
+            width: max-content;
+        }
 
-.hb_item:hover {
-    color: #3B6D9A;
-}
+        .hb_item:hover {
+            color: #3B6D9A;
+        }
 
-#selectMenu {
-    margin-bottom: 10px;
-}
-</style>
+        #selectMenu {
+            margin-bottom: 10px;
+        }
+    </style>
+@endsection
 
 
 @section('scripts')
@@ -181,34 +177,22 @@
 
 
     <script>
-//         function filter(element) {
-//             var value = $(element).val();
-//             value = value.toLowerCase();
-//             value = value.charAt(0).toUpperCase() + value.slice(1);
-//             $(".hint_block > hb_item").each(function() {
-//                 if ($(this).text().search(value) > -1) {
-//                     $(this).show();
-//                 }
-//                 else {
-//                     $(this).hide();
-//                 }
-//             });
-//         }
 
-        function  removeOption() {
-           $('#selectMenu option:selected').remove();
+        function removeOption() {
+            $('#selectMenu option:selected').remove();
         }
 
         function addSelect(elem) {
-            let slag = $(elem).attr('slag')
+            let id = $(elem).attr('id')
             let val = $(elem).html()
-            $('#selectMenu').append('<option value="' + slag + '">'+ val + '</option>');
+            $('#selectMenu').append('<option value="' + id + '">' + val + '</option>');
         }
-        $(document).ready(function() {
+
+        $(document).ready(function () {
 
             // Обработчик события keyup, сработает после того как пользователь отпустит кнопку, после ввода чего-либо в поле поиска.
             // Поле поиска из файла 'index.php' имеет id='search'
-            $("#search").keyup(function() {
+            $("#search").keyup(function () {
 
                 // Присваиваем значение из поля поиска, переменной 'name'.
                 var name = $('#search').val();
@@ -219,8 +203,7 @@
                     // Если переменная 'name' имеет пустое значение, то очищаем блок div с id = 'display'
                     $("#display").html("");
                     $('.hint_block').remove()
-                }
-                else {
+                } else {
                     // Иначе, если переменная 'name' не пустая, то вызываем ajax функцию.
 
                     $.ajax({
@@ -232,7 +215,7 @@
                             search: name, // Присваиваем значение переменной 'name', свойству 'search'.
                             _token: '{{csrf_token()}}'
                         },
-                        success: function(response) {
+                        success: function (response) {
                             // Если ajax запрос выполнен успешно, то, добавляем результат внутри div, у которого id = 'display'.
 
                             console.log(response.data)
@@ -242,9 +225,9 @@
 
                             let str = '<div class="hint_block" id="display">'
 
-                            if(mas.length > 0) {
-                                for(let i = 0; i < mas.length; i++) {
-                                    str = str + '<div class="hb_item" onclick="addSelect(this)" slag="' + mas[i].slug + '">' + mas[i].name + '</div>'
+                            if (mas.length > 0) {
+                                for (let i = 0; i < mas.length; i++) {
+                                    str = str + '<div class="hb_item" onclick="addSelect(this)" id="' + mas[i].id + '">' + mas[i].name + '</div>'
                                 }
                             }
 
@@ -252,36 +235,6 @@
 
                             $('.category-search').append($(str));
 
-
-
-//                             var myDiv = document.getElementById("myDiv");
-
-//Create array of options to be added
-//                             var array = ["Volvo","Saab","Mercades","Audi"];
-//
-//                             var selectList = document.createElement("select");
-//                             selectList.setAttribute("id", "mySelect","multiple");
-//
-//
-//                             myDiv.appendChild(selectList);
-//                             let element7 =  document.createElement("select");
-//                             element7.setAttribute('multiple', '');
-//                             let optarr =  ['vat1','vat2','vat3','vat4','vat5','vat6'];
-//                             element7.setAttribute('size', optarr.length);
-//                             element7.setAttribute('style', 'overflow-y: auto');
-//                             for(let i = 0;i<optarr.length;i++)
-//                             {
-//                                 let opt = document.createElement("option");
-//                                 opt.text = optarr[i];
-//                                 opt.value = optarr[i];
-//                                 opt.className = optarr[i];
-//                                 element7.appendChild(opt);
-//                             }
-//
-//                             let container = document.getElementById('container');
-//                             container.appendChild(element7);
-
-                            // $("#display").html(response).show();
                         }
 
                     });

@@ -30,6 +30,16 @@ class MenuService
     {
         return $this->menuRepository->getMenuItemParentShort();
     }
+    public function getMenuItemWithoutCurrent($id)
+    {
+        return $this->menuRepository->getMenuItemWithoutCurrent($id);
+    }
+
+    public function getChildrenMenuItem($id)
+    {
+        return $this->menuRepository->getChildrenMenuItem($id);
+    }
+
     public function getMenuItemParentWithChildren()
     {
         return $this->menuRepository->getMenuItemParentWithChildren();

@@ -6,22 +6,28 @@ use App\Helpers\StorageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Menu\MenuStoreRequest;
 use App\Http\Requests\PhotoRequest;
+use App\Models\Category;
 use App\Models\Menu;
+use App\Service\CategoryService;
 use App\Service\MenuService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Throwable;
 
 class MenuController extends Controller
 {
     protected $menuService;
+    protected $categoryService;
 
-    public function __construct(MenuService $menuService)
+    public function __construct(MenuService $menuService, CategoryService $categoryService)
     {
         $this->menuService = $menuService;
+        $this->categoryService = $categoryService;
     }
 
 
@@ -43,8 +49,9 @@ class MenuController extends Controller
      */
     public function create()
     {
-        $parent_menus = $this->menuService->getMenuItemParentShort();
-        return view('admin.menu.create', compact('parent_menus'));
+        $parent_menus = $this->menuService->getMenuItem();
+        $all_categories = $this->categoryService->getAllCategory();
+        return view('admin.menu.create', compact('parent_menus', 'all_categories'));
     }
 
     /**
@@ -59,7 +66,18 @@ class MenuController extends Controller
 
         $data['menu_id'] = $data['menu_id'] === 'parent' ? Null : $data['menu_id'];
 
-        Menu::create($data);
+        $parent_menu = Menu::create($data);
+
+        foreach ($data['child_id'] as $item) {
+            $cat = Category::findOrFail($item);
+
+            $menu = new Menu;
+            $menu->name = $cat->name;
+            $menu->slug = $cat->slug;
+            $menu->menu_id = $parent_menu->id;
+            $menu->save();
+        }
+
         return redirect()->route('admin.menu.index');
     }
 
@@ -72,8 +90,11 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        $parent_menus = $this->menuService->getMenuItemParentShort();
-        return view('admin.menu.edit', compact('parent_menus', 'menu'));
+        $parent_menus = $this->menuService->getMenuItemWithoutCurrent($menu->id);
+        $children_menus = $this->menuService->getChildrenMenuItem($menu->id);
+        $all_categories = $this->categoryService->getAllCategory();
+
+        return view('admin.menu.edit', compact('parent_menus', 'menu', 'all_categories', 'children_menus'));
     }
 
     /**
@@ -91,6 +112,31 @@ class MenuController extends Controller
 
         $menu->update($data);
 
+        $children_menus = $this->menuService->getChildrenMenuItem($menu->id);
+
+        if (isset($data['child_id'])) {
+
+            $result_new_item = array_diff($data['child_id'], $children_menus->pluck('slug')->toArray());
+            $result_remove_current_item = array_diff($children_menus->pluck('slug')->toArray(), $data['child_id']);
+
+            foreach ($result_new_item as $item) {
+                $cat = Category::findOrFail($item);
+
+                $new_menu = new Menu;
+                $new_menu->name = $cat->name;
+                $new_menu->slug = $cat->slug;
+                $new_menu->menu_id = $menu->id;
+                $new_menu->save();
+            }
+
+            foreach ($result_remove_current_item as $item) {
+
+                $cur_menu_item = Menu::where('slug', $item)->first();
+
+                $cur_menu_item->menu_id = Null;
+                $cur_menu_item->update();
+            }
+        }
         return redirect()->route('admin.menu.index');
     }
 

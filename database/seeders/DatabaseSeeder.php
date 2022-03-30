@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(OrderStatusesTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
+//        Category::factory(20)->create();
         $this->call(BrandSeeder::class);
         $this->call(ProductTableSeeder::class);
         $this->call(BlockTableSeeder::class);
