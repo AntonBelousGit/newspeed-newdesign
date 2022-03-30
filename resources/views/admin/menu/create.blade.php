@@ -51,15 +51,15 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect02">Parent menu type</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect02" name="type">
-                                        <option value="category">Category</option>
-                                        <option value="product">Product</option>
-                                        <option value="custom">Custom</option>
+                                <div class="form-group category-search">
+                                    <label>Categories</label>
+                                    <input type="text" name="name" id="search" class="form-control" required value="">
+
+                                </div>
+                                <div class="form-group">
+                                    <select multiple style="width: 100%;" id="selectMenu">
                                     </select>
+                                    <div class="btn btn-primary" onclick="removeOption()">Удалить выбраный пункт</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Menu item name</label>
@@ -131,6 +131,30 @@
 
 @endsection
 
+<style>
+.hint_block {
+    border: 1px solid #DEE2E6;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+}
+
+.hb_item {
+    cursor: pointer;
+    width: max-content;
+}
+
+.hb_item:hover {
+    color: #3B6D9A;
+}
+
+#selectMenu {
+    margin-bottom: 10px;
+}
+</style>
+
+
 @section('scripts')
     <script type="text/javascript">
         $.ajaxSetup({
@@ -144,7 +168,6 @@
     <script src="{{asset('adminka/js/removePhotoMenu.js')}}"></script>
     <script>
         $('#title').keyup(function () {
-
             $('#slug').val(generate_url($(this).val()));
         });
 
@@ -158,6 +181,29 @@
 
 
     <script>
+//         function filter(element) {
+//             var value = $(element).val();
+//             value = value.toLowerCase();
+//             value = value.charAt(0).toUpperCase() + value.slice(1);
+//             $(".hint_block > hb_item").each(function() {
+//                 if ($(this).text().search(value) > -1) {
+//                     $(this).show();
+//                 }
+//                 else {
+//                     $(this).hide();
+//                 }
+//             });
+//         }
+
+        function  removeOption() {
+           $('#selectMenu option:selected').remove();
+        }
+
+        function addSelect(elem) {
+            let slag = $(elem).attr('slag')
+            let val = $(elem).html()
+            $('#selectMenu').append('<option value="' + slag + '">'+ val + '</option>');
+        }
         $(document).ready(function() {
 
             // Обработчик события keyup, сработает после того как пользователь отпустит кнопку, после ввода чего-либо в поле поиска.
@@ -172,7 +218,7 @@
 
                     // Если переменная 'name' имеет пустое значение, то очищаем блок div с id = 'display'
                     $("#display").html("");
-
+                    $('.hint_block').remove()
                 }
                 else {
                     // Иначе, если переменная 'name' не пустая, то вызываем ajax функцию.
@@ -190,33 +236,50 @@
                             // Если ajax запрос выполнен успешно, то, добавляем результат внутри div, у которого id = 'display'.
 
                             console.log(response.data)
+                            $('.hint_block').remove();
 
-                            var myDiv = document.getElementById("myDiv");
+                            let mas = response.data;
 
-//Create array of options to be added
-                            var array = ["Volvo","Saab","Mercades","Audi"];
+                            let str = '<div class="hint_block" id="display">'
 
-                            var selectList = document.createElement("select");
-                            selectList.setAttribute("id", "mySelect","multiple");
-
-
-                            myDiv.appendChild(selectList);
-                            let element7 =  document.createElement("select");
-                            element7.setAttribute('multiple', '');
-                            let optarr =  ['vat1','vat2','vat3','vat4','vat5','vat6'];
-                            element7.setAttribute('size', optarr.length);
-                            element7.setAttribute('style', 'overflow-y: auto');
-                            for(let i = 0;i<optarr.length;i++)
-                            {
-                                let opt = document.createElement("option");
-                                opt.text = optarr[i];
-                                opt.value = optarr[i];
-                                opt.className = optarr[i];
-                                element7.appendChild(opt);
+                            if(mas.length > 0) {
+                                for(let i = 0; i < mas.length; i++) {
+                                    str = str + '<div class="hb_item" onclick="addSelect(this)" slag="' + mas[i].slug + '">' + mas[i].name + '</div>'
+                                }
                             }
 
-                            let container = document.getElementById('container');
-                            container.appendChild(element7);
+                            str = str + '</div>'
+
+                            $('.category-search').append($(str));
+
+
+
+//                             var myDiv = document.getElementById("myDiv");
+
+//Create array of options to be added
+//                             var array = ["Volvo","Saab","Mercades","Audi"];
+//
+//                             var selectList = document.createElement("select");
+//                             selectList.setAttribute("id", "mySelect","multiple");
+//
+//
+//                             myDiv.appendChild(selectList);
+//                             let element7 =  document.createElement("select");
+//                             element7.setAttribute('multiple', '');
+//                             let optarr =  ['vat1','vat2','vat3','vat4','vat5','vat6'];
+//                             element7.setAttribute('size', optarr.length);
+//                             element7.setAttribute('style', 'overflow-y: auto');
+//                             for(let i = 0;i<optarr.length;i++)
+//                             {
+//                                 let opt = document.createElement("option");
+//                                 opt.text = optarr[i];
+//                                 opt.value = optarr[i];
+//                                 opt.className = optarr[i];
+//                                 element7.appendChild(opt);
+//                             }
+//
+//                             let container = document.getElementById('container');
+//                             container.appendChild(element7);
 
                             // $("#display").html(response).show();
                         }
