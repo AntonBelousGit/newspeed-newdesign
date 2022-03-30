@@ -25,7 +25,7 @@ class CreateCategoriesTable extends Migration
             $table->string('recomend')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('image')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
 
