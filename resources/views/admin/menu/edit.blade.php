@@ -3,6 +3,28 @@
 @section('style')
     {{--<!-- MAIN CSS -->--}}
     <link rel="stylesheet" href="{{asset('adminka/css/main.css')}}">
+    <style>
+        .hint_block {
+            border: 1px solid #DEE2E6;
+            box-sizing: border-box;
+            border-radius: 4px;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .hb_item {
+            cursor: pointer;
+            width: max-content;
+        }
+
+        .hb_item:hover {
+            color: #3B6D9A;
+        }
+
+        #selectMenu {
+            margin-bottom: 10px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -134,32 +156,6 @@
         </div>
     </div>
 @endsection
-
-@section('style')
-    <style>
-        .hint_block {
-            border: 1px solid #DEE2E6;
-            box-sizing: border-box;
-            border-radius: 4px;
-            width: 100%;
-            padding: 10px;
-        }
-
-        .hb_item {
-            cursor: pointer;
-            width: max-content;
-        }
-
-        .hb_item:hover {
-            color: #3B6D9A;
-        }
-
-        #selectMenu {
-            margin-bottom: 10px;
-        }
-    </style>
-@endsection
-
 
 @section('scripts')
     <script type="text/javascript">
