@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Menu;
 
-use App\Helpers\StorageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Menu\MenuStoreRequest;
 use App\Http\Requests\PhotoRequest;
@@ -13,10 +12,7 @@ use App\Service\MenuService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Throwable;
 
 class MenuController extends Controller
@@ -62,6 +58,7 @@ class MenuController extends Controller
      */
     public function store(MenuStoreRequest $request)
     {
+
         $data = $request->validated();
 
         $data['menu_id'] = $data['menu_id'] === 'parent' ? Null : $data['menu_id'];

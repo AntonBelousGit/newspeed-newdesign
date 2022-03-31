@@ -90,17 +90,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Slug</label>
-                                    <input type="text" name="slug" id="slug" class="form-control" required value="{{$menu->name}}">
+                                    <input type="text" name="slug" id="slug" class="form-control" required value="{{$menu->slug}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Status</label>
                                     <br>
                                     <label class="fancy-radio">
-                                        <input type="radio" name="status" value="1" {{ $menu->status === 1 ? 'checked':'' }}>
+                                        <input type="radio" name="status" value="1" {{ $menu->status == 1 ? 'checked':'' }}>
                                         <span><i></i>Active</span>
                                     </label>
                                     <label class="fancy-radio">
-                                        <input type="radio" name="status"  value="0" {{ $menu->status === 0 ? 'checked':'' }}>
+                                        <input type="radio" name="status"  value="0" {{ $menu->status == 0 ? 'checked':'' }}>
                                         <span><i></i>Inactive</span>
                                     </label>
                                     <p id="error-radio"></p>

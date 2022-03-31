@@ -74,7 +74,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'],
         Route::post('/menu/add-photo', [MenuController::class, 'addPhoto'])->name('menu-add-photo');
         Route::post('/menu/remove-photo', [MenuController::class, 'removePhoto'])->name('menu-remove-photo');
 
-
         Route::group(['prefix' => 'attributes'], function () {
 
             Route::get('/', [AttributeController::class, 'index'])->name('attributes.index');
