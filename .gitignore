@@ -17,8 +17,10 @@ yarn-error.log
 /верстка/
 /public/assets/uploads/products/
 /public/assets/uploads/category/
+/public/assets/uploads/menu/
 
 # Project exclude paths
 /storage/app/
 /storage/debugbar/
 /storage/framework/
+
