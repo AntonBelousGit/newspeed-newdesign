@@ -389,7 +389,7 @@
             <nav id="left-sidebar-nav" class="sidebar-nav">
 
                 <ul id="main-menu" class="metismenu">
-                    <li class="active"><a href="index"><i class="icon-home"></i><span>Dashboard</span></a></li>
+                    <li @if(Route::is('admin.users.*')) class="active" @endif><a href="index"><i class="icon-home"></i><span>Dashboard</span></a></li>
                     <li><a href="{{ route('admin.users.index') }}" class="has-arrow"><i
                                 class="icon-book-open"></i><span>Users</span></a>
                         <ul>
@@ -399,7 +399,7 @@
                                         class="icon-users"></i> List</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('admin.order.index') }}" class="has-arrow"><i
+                    <li @if(Route::is('admin.order.*')) class="active" @endif ><a href="{{ route('admin.order.index') }}" class="has-arrow"><i
                                 class="icon-book-open"></i><span>Orders</span></a>
                         <ul>
                             <li><a href="{{ route('admin.order.index') }}" class="custom_content"><i
@@ -408,28 +408,28 @@
                                         class="icon-users"></i> List</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li @if(Route::is('admin.categories.*')) class="active" @endif >
                         <a href="#uiElements" class="has-arrow"><i class="icon-diamond"></i><span>Categories</span></a>
                         <ul>
                             <li><a href="{{ route('admin.categories.index') }}">All</a></li>
                             <li><a href="{{ route('admin.categories.create') }}">New</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li @if(Route::is('admin.products.*')) class="active" @endif>
                         <a href="#uiElements" class="has-arrow"><i class="icon-diamond"></i><span>Product</span></a>
                         <ul>
                             <li><a href="{{ route('admin.products.index') }}">All</a></li>
                             <li><a href="{{ route('admin.products.create') }}">New</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li @if(Route::is('admin.brand.*')) class="active" @endif>
                         <a href="#uiElements" class="has-arrow"><i class="icon-diamond"></i><span>Brand</span></a>
                         <ul>
                             <li><a href="{{ route('admin.brand.index') }}">All</a></li>
                             <li><a href="{{ route('admin.brand.create') }}">New</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li @if(Route::is('admin.attributes.*')) class="active" @endif>
                         <a href="#uiElements" class="has-arrow"><i
                                 class="icon-size-actual"></i><span>Attribute</span></a>
                         <ul>
@@ -437,33 +437,35 @@
                             <li><a href="{{ route('admin.attributes.create') }}">Create</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('admin.blocks.index') }}" class="has-arrow"><i class="fa fa-photo"></i>Blocks</a>
+                    <li @if(Route::is('admin.blocks.*')) class="active" @endif>
+                        <a href="{{ route('admin.blocks.index') }}" class="has-arrow"><i class="fa fa-photo"></i>Blocks</a>
                         <ul>
                             <li><a href="{{ route('admin.blocks.index') }}">List</a></li>
                             <li><a href="{{ route('admin.blocks.create') }}">Create Block</a></li>
                             <li><a href="{{ route('admin.blocks.positions') }}">Positions</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('admin.banners.index') }}" class="has-arrow"><i class="fa fa-photo"></i>Banners</a>
+                    <li @if(Route::is('admin.banners.*')) class="active" @endif>
+                        <a href="{{ route('admin.banners.index') }}" class="has-arrow"><i class="fa fa-photo"></i>Banners</a>
                         <ul>
                             <li><a href="{{ route('admin.banners.index') }}">List</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li @if(Route::is('admin.blogs.*')) class="active" @endif>
                         <a href="{{ route('admin.blogs.index') }}" class="has-arrow"><i class="icon-globe"></i><span>Blog</span></a>
                         <ul>
                             <li><a href="{{ route('admin.blogs.index') }}">Blog List</a></li>
                             <li><a href="{{ route('admin.blogs.create') }}">New Post</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li @if(Route::is('admin.menu.*')) class="active" @endif>
                         <a href="{{ route('admin.menu.index') }}" class="has-arrow"><i
                                 class="icon-globe"></i><span>Menu</span></a>
                         <ul>
                             <li><a href="{{ route('admin.menu.index') }}">Menu List</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li @if(Route::is('admin.contacts.*')) class="active" @endif>
                         <a href="{{ route('admin.contacts.edit', 'contacts') }}" class=""><i
                                 class="icon-envelope"></i><span>Contacts</span></a>
                     </li>
