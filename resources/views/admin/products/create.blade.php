@@ -51,7 +51,8 @@
                                                 <div>
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
-                                                            <label class="input-group-text" for="inputGroupSelect01">Выбрать категорию</label>
+                                                            <label class="input-group-text" for="inputGroupSelect01">Выбрать
+                                                                категорию</label>
                                                         </div>
                                                         <select class="custom-select" id="inputGroupSelect01"
                                                                 name="category_id">
@@ -62,7 +63,8 @@
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
-                                                            <label class="input-group-text" for="inputGroupSelect01">Выбрать бренд</label>
+                                                            <label class="input-group-text" for="inputGroupSelect01">Выбрать
+                                                                бренд</label>
                                                         </div>
                                                         <select class="custom-select" id="inputGroupSelect01"
                                                                 name="brand_id">
@@ -134,14 +136,14 @@
                                                         @error('quantity')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                         @enderror
-                                                        <label>Обычная цена</label>
+                                                        <label>Цена</label>
                                                         <input type="number" min="0" step="0.01" name="regular_price"
                                                                class="form-control" required="true"
                                                                value="{{old('regular_price')}}">
                                                         @error('regular_price')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                         @enderror
-                                                        <label>Продажная цена</label>
+                                                        <label>Акционная цена</label>
                                                         <input type="number" min="0" step="0.01" name="sale_price"
                                                                class="form-control" required="true"
                                                                value="{{old('sale_price')}}">
@@ -185,7 +187,7 @@
                                                             </div>
                                                             <div id="photo-error-message"
                                                                  class="error-message mb-1"></div>
-                                                            <small class="form-text text-muted">Изображения. До 1мб
+                                                            <small class="form-text text-muted">Изображения. До 200КБ
                                                                 файл</small>
                                                         </div>
                                                     </div>
@@ -212,7 +214,7 @@
                                                             </div>
                                                             <div id="photo-error-message"
                                                                  class="error-message mb-1"></div>
-                                                            <small class="form-text text-muted">Изображения. До 1мб
+                                                            <small class="form-text text-muted">Изображения. До 200КБ
                                                                 файл</small>
                                                         </div>
                                                     </div>
@@ -331,11 +333,11 @@
         function r_handler(elem, respons, id) {
             var tmpelem = $(elem).parent('td').parent('tr').find('td:nth-child(2)')
 
-            var str = '<select class="js-example-basic-single" name="state['+ id +'][]" onchange="addSelect(this)">'
+            var str = '<select class="js-example-basic-single" name="state[' + id + '][]" onchange="addSelect(this)">'
             for (var i = 0; i < respons.length; i++) {
                 str = str + '<option value="' + respons[i].id + '">' + respons[i].value + '</option>'
             }
-            str = str + '<option value="Add" data-for="'+ id +'">Добавить</option></select>'
+            str = str + '<option value="Add" data-for="' + id + '">Добавить</option></select>'
 
             $(tmpelem).find('.wrap_add_input').remove();
 
@@ -416,7 +418,7 @@
             if ($(elem).val() == 0) return false
             if ($(elem).val() == 'Add') {
                 let add_to = $(elem).find("option:selected").attr('data-for');
-                $('<div class="wrap_add_input"><input type="text" name="addAttribute['+ add_to +'][]"></div>').appendTo($(elem).parent('td'))
+                $('<div class="wrap_add_input"><input type="text" name="addAttribute[' + add_to + '][]"></div>').appendTo($(elem).parent('td'))
             }
             if ($(elem).val() != 'Add') {
                 $(elem).siblings('.wrap_add_input').remove()

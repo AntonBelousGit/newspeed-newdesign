@@ -89,7 +89,7 @@
                                     <label>Статус</label>
                                     <br />
                                     <label class="fancy-radio">
-                                        <input type="radio" name="status" value="true" >
+                                        <input type="radio" name="status" value="true" checked>
                                         <span><i></i>Активна</span>
                                     </label>
                                     <label class="fancy-radio">
@@ -116,7 +116,7 @@
                                             </div>
                                         </div>
                                         <div id="photo-error-message" class="error-message mb-1"></div>
-                                        <small class="form-text text-muted">Изображения. До 1мб файл</small>
+                                        <small class="form-text text-muted">Изображения. До 200кб файл</small>
                                     </div>
                                 </div>
                              <div class="body">

@@ -96,7 +96,7 @@
                                     <label>Status</label>
                                     <br>
                                     <label class="fancy-radio">
-                                        <input type="radio" name="status" value="1">
+                                        <input type="radio" name="status" value="1" checked>
                                         <span><i></i>Active</span>
                                     </label>
                                     <label class="fancy-radio">
@@ -108,7 +108,7 @@
                                 <div class="form-group">
                                     <label>Порядковый номер</label>
                                     <input type="number" step="1" min="1" name="sort" id="title" class="form-control"
-                                           required="true" value="" style="max-width: 300px">
+                                           required value="1" style="max-width: 300px">
                                 </div>
                                 <div class="form-group">
                                     <label>ICON</label>
@@ -129,7 +129,7 @@
                                             </div>
                                         </div>
                                         <div id="photo-error-message" class="error-message mb-1"></div>
-                                        <small class="form-text text-muted">Изображения. До 1мб файл</small>
+                                        <small class="form-text text-muted">Изображения. До 100KБ файл, размер 24*24px</small>
                                     </div>
                                 </div>
                                 <br>

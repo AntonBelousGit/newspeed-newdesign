@@ -13,6 +13,8 @@ class Menu extends Model
       'menu_id','sort','title','slug','status','icon','name'
     ];
 
+//    protected $with = 'children';
+
     public function parent()
     {
         return $this->belongsTo(Menu::class, 'menu_id');

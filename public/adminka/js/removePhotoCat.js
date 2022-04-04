@@ -13,32 +13,18 @@ function removePhoto(el, name) {
             $(el).parent().parent().remove();
         },
         error: function(response) {
-            let errorMessage = '';
-            if (response.status === 422) {
-                errorMessage = response.responseJSON.errors.photo[0];
-            } else if (response.status === 500) {
-                errorMessage = 'Внутренняя ошибка сервера';
-            }
-            $('#photo-error-message').text(errorMessage);
+            // let errorMessage = '';
+            // if (response.status === 422) {
+            //     errorMessage = response.responseJSON.errors.photo[0];
+            // } else if (response.status === 500) {
+            //     errorMessage = 'Внутренняя ошибка сервера';
+            // }
+            // $('#photo-error-message').text(errorMessage);
+            $(el).parent().parent().remove();
         }
     })
+}
 
-    // $.ajax({
-    //     url: '/uploads/remove-file',
-    //     type: "POST",
-    //     data: { name: name },
-    //     success: function(response) {
-    //         console.log(response);
-    //         $(el).parent().parent().remove();
-    //     },
-    //     error: function(response) {
-    //         let errorMessage = '';
-    //         if (response.status === 422) {
-    //             errorMessage = response.responseJSON.errors.photo[0];
-    //         } else if (response.status === 500) {
-    //             errorMessage = 'Внутренняя ошибка сервера';
-    //         }
-    //         $('#photo-error-message').text(errorMessage);
-    //     }
-    // });
+function removePhotoSingle(el) {
+    $(el).parent().parent().remove();
 }

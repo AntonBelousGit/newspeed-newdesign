@@ -78,11 +78,11 @@ $(function() {
 
                 success: function (response) {
                     console.log(response);
-                    $('.gallery-single .row>div:first-of-type').remove();
+                    // $('.gallery-single .row>div:first-of-type').remove();
                     $('.gallery-single .row>div:first-of-type').html();
                     $('.gallery-single .row>div:first-of-type').html(`
                     <a href="/assets/uploads/products/${response.filename}" class="img-gallery-box" data-fancybox="images" data-width="1200" style="background-image: url(/assets/uploads/products/${response.filename}); background-repeat: no-repeat">
-                        <div class="trash-block" data-url="${response.filename}" onclick="removePhoto(this,this.getAttribute('data-url'));return false;"></div>
+                        <div class="trash-block" data-url="${response.filename}" onclick="removePhotoSingle(this,this.getAttribute('data-url'));return false;"></div>
                     </a>
                     <input type="hidden" name="image" value="${response.filename}">`);
                 },

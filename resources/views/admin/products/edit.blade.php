@@ -138,14 +138,14 @@
                                                             @error('quantity')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
-                                                            <label>Обычная цена</label>
+                                                            <label>Цена</label>
                                                             <input type="number" min="0" step="0.01"
                                                                    name="regular_price" class="form-control"
                                                                    required="true" value="{{$product->regular_price}}">
                                                             @error('regular_price')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
-                                                            <label>Продажная цена</label>
+                                                            <label>Акционная цена</label>
                                                             <input type="number" min="0" step="0.01" name="sale_price"
                                                                    class="form-control"
                                                                    required="true" value="{{$product->sale_price}}">
@@ -190,7 +190,7 @@
                                                                                onclick="event.preventDefault()">
                                                                                 <div class="trash-block"
                                                                                      data-url="{{$product->image}}"
-                                                                                     onclick="removePhoto(this,this.getAttribute('data-url'));return false;"></div>
+                                                                                     onclick="removePhotoSingle(this,this.getAttribute('data-url'));return false;"></div>
                                                                             </a>
                                                                             <input type="hidden" name="image"
                                                                                    value="{{$product->image}}">
@@ -217,7 +217,7 @@
                                                                 </div>
                                                                 <div id="photo-error-message"
                                                                      class="error-message mb-1"></div>
-                                                                <small class="form-text text-muted">Изображения. До 1мб
+                                                                <small class="form-text text-muted">Изображения. До 200КБ
                                                                     файл</small>
                                                             </div>
                                                         </div>
@@ -268,7 +268,7 @@
                                                                 </div>
                                                                 <div id="photo-error-message"
                                                                      class="error-message mb-1"></div>
-                                                                <small class="form-text text-muted">Изображения. До 1мб
+                                                                <small class="form-text text-muted">Изображения. До 200КБ
                                                                     файл</small>
                                                             </div>
                                                         </div>
