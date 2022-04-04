@@ -69,21 +69,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'],
             'order' => OrderController::class,
             'brand' => BrandController::class,
             'menu' => MenuController::class,
+            'attributes' => AttributeController::class,
         ]);
 
         Route::post('/menu/add-photo', [MenuController::class, 'addPhoto'])->name('menu-add-photo');
         Route::post('/menu/remove-photo', [MenuController::class, 'removePhoto'])->name('menu-remove-photo');
 
         Route::group(['prefix' => 'attributes'], function () {
-
-            Route::get('/', [AttributeController::class, 'index'])->name('attributes.index');
-            Route::get('/create', [AttributeController::class, 'create'])->name('attributes.create');
-            Route::post('/store', [AttributeController::class, 'store'])->name('attributes.store');
-            Route::get('/{id}/edit', [AttributeController::class, 'edit'])->name('attributes.edit');
             Route::get('/{id}/edit-value', [AttributeController::class, 'editValue'])->name('attributes.edit-value');
-            Route::post('/update/{id}', [AttributeController::class, 'update'])->name('attributes.update');
-            Route::delete('/{id}/delete', [AttributeController::class, 'delete'])->name('attributes.delete');
-
             Route::get('/get-attribute/{id}', [AttributeValueController::class, 'getValues'])->name('attribute.get-attribute');
             Route::post('/add-values/{id}', [AttributeValueController::class, 'addValues'])->name('attribute-value.add-values');
             Route::post('/update-values', [AttributeValueController::class, 'updateValues']);

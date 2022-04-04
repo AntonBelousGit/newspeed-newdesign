@@ -10,15 +10,8 @@ class Attribute extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['code','name','frontend_type','is_filterable','is_required'];
+    protected $fillable = ['code','name'];
 
-    /**
-     * @var array
-     */
-    protected $casts  = [
-        'is_filterable' =>  'boolean',
-        'is_required'   =>  'boolean',
-    ];
 
     public function values(): HasMany
     {

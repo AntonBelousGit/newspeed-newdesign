@@ -56,7 +56,7 @@ Route::group(['prefix' => 'cart'], function () {
 
 Route::group(['prefix' => 'attribute', 'middleware' => 'auth'], function () {
     Route::post('/get-attribute', [AttributeValueController::class, 'getAttributeApi'])->name('get-attribute-api');
-    Route::post('/get-value', [AttributeValueController::class, 'getValues'])->name('attribute-value');
+    Route::get('/get-value', [AttributeValueController::class, 'getValues'])->name('attribute-value');
     Route::post('/add-value', [AttributeValueController::class, 'addValues'])->name('add-attribute-value');
     Route::post('/delete-value', [AttributeValueController::class, 'deleteValues'])->name('delete-attribute-value');
 //    Route::post('update', [CartController::class, 'cartUpdate'])->name('cart.update');

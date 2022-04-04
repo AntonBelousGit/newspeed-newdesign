@@ -23,7 +23,7 @@ class CreateProductAttributesTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('attribute_id');
 
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
 
             $table->timestamps();

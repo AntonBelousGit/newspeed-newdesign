@@ -26,7 +26,6 @@ class AttributeRequest extends FormRequest
         return [
             'code' => 'required',
             'name' => 'required',
-            'frontend_type' => 'required',
         ];
     }
 }

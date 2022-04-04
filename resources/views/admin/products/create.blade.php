@@ -357,7 +357,7 @@
             // let value = $(elem).find('option:selected').text();
             $.ajax({
                 url: r_path,
-                type: "POST",
+                type: "GET",
                 data: {
                     id: r_args
                 },

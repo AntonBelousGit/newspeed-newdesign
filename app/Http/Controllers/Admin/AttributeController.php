@@ -6,10 +6,9 @@ use App\Http\Requests\AttributeRequest;
 use App\Models\Attribute;
 use App\Service\AttributeService;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
-use Illuminate\Http\Request;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
+use Illuminate\Http\RedirectResponse;
 
 
 class AttributeController extends Controller
@@ -47,9 +46,8 @@ class AttributeController extends Controller
         return redirect()->route('admin.attributes.index')->with(200, 'Attribute added successfully');
     }
 
-    public function edit($id)
+    public function edit(Attribute $attribute)
     {
-        $attribute = $this->attributeService->getEdit($id);
 
         if ($attribute === null) {
             abort(404);
@@ -67,20 +65,19 @@ class AttributeController extends Controller
             abort(404);
         }
 
-        return view('admin.attributes.value.index', compact('attribute','id'));
+        return view('admin.attributes.value.index', compact('attribute', 'id'));
     }
 
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param AttributeRequest $request
+     * @param Attribute $attribute
+     * @return RedirectResponse
      */
-    public function update(AttributeRequest $request, $id)
+    public function update(AttributeRequest $request, Attribute $attribute)
     {
-        $attribute = $this->attributeService->getEdit($id);
 
         if ($attribute === null) {
             abort(404);
@@ -96,9 +93,8 @@ class AttributeController extends Controller
         return redirect()->route('admin.attributes.index')->with(200, 'Attribute updated successfully');
     }
 
-    public function delete($id)
+    public function destroy(Attribute $attribute)
     {
-        $attribute = $this->attributeService->getEdit($id);
 
         if ($attribute === null) {
             abort(404);

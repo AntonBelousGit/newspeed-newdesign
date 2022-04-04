@@ -58,9 +58,6 @@
                                     <tr>
                                         <th>Code</th>
                                         <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Filterable</th>
-                                        <th>Required</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -69,9 +66,6 @@
                                     <tr>
                                         <th>Code</th>
                                         <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Filterable</th>
-                                        <th>Required</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>
@@ -80,15 +74,6 @@
                                         <tr class="gradeA">
                                             <td>{{$item->code}}</td>
                                             <td>{{$item->name}}</td>
-                                            <td>
-                                                {{$item->frontend_type}}
-                                            </td>
-                                            <td>
-                                                {{$item->is_filterable === 1 ? 'yes':'no'}}
-                                            </td>
-                                            <td>
-                                                {{$item->is_required === 1 ? 'yes':'no'}}
-                                            </td>
                                             <td class="actions">
                                                 <a href="{{route('admin.attributes.edit', $item )}}"
                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
@@ -102,7 +87,7 @@
                                                 >
                                                     <i class="fa fa-plus-circle"></i>
                                                 </a>
-                                                <form action="{{route('admin.attributes.delete',$item)}}"
+                                                <form action="{{route('admin.attributes.destroy',$item)}}"
                                                       class="d-inline" method="POST">
                                                     @csrf
                                                     @method('DELETE')
