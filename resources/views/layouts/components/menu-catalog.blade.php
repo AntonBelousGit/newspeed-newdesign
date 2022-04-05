@@ -14,9 +14,7 @@
             <div class="un_list">
                 @foreach($catalog_item->children as $item)
                 <div class="wrap_list_un_menu">
-                    <h3 class="title_un_menu">
-                        <a href="{{route('category',['slug'=>$item->slug])}}">{{$item->name}}</a>
-                    </h3>
+                    <a class="title_un_menu" href="{{route('category',['slug'=>$item->slug])}}">{{$item->name}}</a>
                     @foreach($item->children as $child)
                     <div class="un_menu">
                         <a href="{{route('category',['slug'=>$child->slug])}}">{{$child->name}}</a>
