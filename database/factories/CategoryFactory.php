@@ -14,6 +14,7 @@ class CategoryFactory extends Factory
             'slug' => $this->faker->unique()->slug,
             'popular' => 'on',
             'recomend' => 'on',
+            'status' => 'true'
         ];
     }
 }

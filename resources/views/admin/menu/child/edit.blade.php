@@ -60,18 +60,7 @@
                             <form id="basic-form" method="post" action="{{ route('admin.menu.update', $menu) }}">
                                 @csrf
                                 @method('patch')
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Parent menu</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01" name="menu_id">
-                                        <option value="parent">Parent menu</option>
-                                        @foreach($parent_menus as $item)
-                                            <option
-                                                value="{{$item->id}}" {{ $item->id == $menu->menu_id? 'selected':'' }}>{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <input type="hidden" name="menu_id" value="{{$menu->menu_id}}">
                                 <div class="form-group category-search">
                                     <label>Categories</label>
                                     <input type="text" id="search" class="form-control">
@@ -87,25 +76,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Menu item name</label>
-                                    <input type="text" name="name" id="title" class="form-control" required
-                                           value="{{$menu->name}}">
+                                    <input type="text" name="name" id="title" class="form-control" required value="{{$menu->name}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Slug</label>
-                                    <input type="text" name="slug" id="slug" class="form-control" required
-                                           value="{{$menu->slug}}">
+                                    <input type="text" name="slug" id="slug" class="form-control" required value="{{$menu->slug}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Status</label>
                                     <br>
                                     <label class="fancy-radio">
-                                        <input type="radio" name="status"
-                                               value="1" {{ $menu->status == 1 ? 'checked':'' }}>
+                                        <input type="radio" name="status" value="1" {{ $menu->status == 1 ? 'checked':'' }}>
                                         <span><i></i>Active</span>
                                     </label>
                                     <label class="fancy-radio">
-                                        <input type="radio" name="status"
-                                               value="0" {{ $menu->status == 0 ? 'checked':'' }}>
+                                        <input type="radio" name="status"  value="0" {{ $menu->status == 0 ? 'checked':'' }}>
                                         <span><i></i>Inactive</span>
                                     </label>
                                     <p id="error-radio"></p>
@@ -114,42 +99,6 @@
                                     <label>Порядковый номер</label>
                                     <input type="number" step="1" min="1" name="sort" id="title" class="form-control"
                                            required value="{{$menu->sort}}" style="max-width: 300px">
-                                </div>
-                                <div class="form-group">
-                                    <label>ICON</label>
-                                    <div class="gallery-single" data-id="{{$menu->id}}">
-                                        <div class="row">
-                                            {{--                                                                        {{dd($images)}}--}}
-                                            @if(!is_null($menu->icon))
-                                                <div class="col-md-3">
-                                                    <a href="{{asset('assets/uploads/menu')}}/{{$menu->icon}}"
-                                                       class="img-gallery-box" data-fancybox="images" data-width="1200"
-                                                       style="background-image: url(/assets/uploads/menu/{{$menu->icon}}); background-repeat: no-repeat"
-                                                       onclick="event.preventDefault()">
-                                                        <div class="trash-block" data-url="{{$menu->icon}}"
-                                                             onclick="removePhoto(this,this.getAttribute('data-url'));return false;"></div>
-                                                    </a>
-                                                    <input type="hidden" name="icon" value="{{$menu->icon}}">
-                                                </div>
-                                            @endif
-                                            @error('image')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                            <div class="col-md-3">
-                                                <label for="addSinglePhotoInput" class="add-photo">
-                                                    <input type="file" name="file" id="addSinglePhotoInput"
-                                                           class="input-file-hidden">
-                                                    <div class="add-photo-title text-center">
-                                                        <img src="{{asset('img/plus.svg')}}" style="width: 20px;">
-                                                        <div class="dark-blue font-12 medium">Добавить фото</div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div id="photo-error-message" class="error-message mb-1"></div>
-                                        <small class="form-text text-muted">Изображения. До 100KБ файл, размер
-                                            24*24px</small>
-                                    </div>
                                 </div>
                                 <br>
                                 <button type="submit" class="btn btn-primary">Сохранить</button>

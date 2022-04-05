@@ -12,6 +12,7 @@ use App\Service\MenuService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Throwable;
 
@@ -65,14 +66,16 @@ class MenuController extends Controller
 
         $parent_menu = Menu::create($data);
 
-        foreach ($data['child_id'] as $item) {
-            $cat = Category::findOrFail($item);
+        if (isset($data['child_id'])) {
+            foreach ($data['child_id'] as $item) {
+                $cat = Category::findOrFail($item);
 
-            $menu = new Menu;
-            $menu->name = $cat->name;
-            $menu->slug = $cat->slug;
-            $menu->menu_id = $parent_menu->id;
-            $menu->save();
+                $menu = new Menu;
+                $menu->name = $cat->name;
+                $menu->slug = $cat->slug;
+                $menu->menu_id = $parent_menu->id;
+                $menu->save();
+            }
         }
 
         return redirect()->route('admin.menu.index');
@@ -87,11 +90,17 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        $parent_menus = $this->menuService->getMenuItemWithoutCurrent($menu->id);
+
         $children_menus = $this->menuService->getChildrenMenuItem($menu->id);
         $all_categories = $this->categoryService->getAllCategory();
 
-        return view('admin.menu.edit', compact('parent_menus', 'menu', 'all_categories', 'children_menus'));
+        if (is_null($menu->menu_id)) {
+            $parent_menus = $this->menuService->getMenuItemWithoutCurrent($menu->id);
+
+            return view('admin.menu.edit', compact('parent_menus', 'menu', 'all_categories', 'children_menus'));
+        }
+
+        return view('admin.menu.child.edit', compact('menu', 'all_categories', 'children_menus'));
     }
 
     /**

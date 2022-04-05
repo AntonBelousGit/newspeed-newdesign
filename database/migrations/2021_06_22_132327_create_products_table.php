@@ -32,7 +32,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('brand_id')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnUpdate()->nullOnDelete();;
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
         });
     }
