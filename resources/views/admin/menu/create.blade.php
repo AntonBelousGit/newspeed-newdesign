@@ -129,7 +129,8 @@
                                             </div>
                                         </div>
                                         <div id="photo-error-message" class="error-message mb-1"></div>
-                                        <small class="form-text text-muted">Изображения. До 100KБ файл, размер 24*24px</small>
+                                        <small class="form-text text-muted">Изображения. До 100KБ файл, размер
+                                            24*24px</small>
                                     </div>
                                 </div>
                                 <br>

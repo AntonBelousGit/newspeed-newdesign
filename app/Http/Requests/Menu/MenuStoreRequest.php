@@ -14,7 +14,7 @@ class MenuStoreRequest extends FormRequest
             'sort' => 'integer',
             'menu_id' => 'required',
             'status' => 'required',
-            'icon' => 'required',
+            'icon' => 'filled',
             'child_id' => 'array|nullable'
         ];
     }
