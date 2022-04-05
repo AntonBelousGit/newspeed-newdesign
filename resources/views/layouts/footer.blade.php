@@ -206,33 +206,147 @@
             </div>
         </div>
         <div class="box_modal_body">
-            <div class="list_cart">
-                <div class="lc_item">
-                    <div class="wrap_img">
-                        <picture><source srcset="#"type="image/webp"><img src="#" alt="img"></picture>
-                    </div>
-                    <div class="lc_wrap_name">
-                        <div class="lc_name">
-
+            <div class="wrap_list_cart">
+                <div class="list_cart">
+                    <div class="lc_item">
+                        <div class="wrap_img">
+                            <picture><source srcset="./img/busket_img.webp"type="image/webp"><img src="./img/busket_img.png" alt="img"></picture>
                         </div>
-                        <div class="wrap_numeric">
-                            <div class="numeric_minus" onclick="minusNum(this)">
-                                <svg class="svg-minus">
-                                    <use xlink:href="#svg-minus"></use>
-                                </svg>
+                        <div class="lc_wrap_name">
+                            <div class="lc_name">
+                                Электросамокат Название длинное-предлинное
                             </div>
-                            <input type="number" min="1" max="9" step="1" value="1">
-                            <div class="numeric_plus" onclick="plusNum(this)">+</div>
+                            <div class="wrap_numeric">
+                                <div class="numeric_minus" onclick="minusNum(this)">
+                                    <svg class="svg-minus">
+                                        <use xlink:href="#svg-minus"></use>
+                                    </svg>
+                                </div>
+                                <div class="wrap_number_input">
+                                    <input type="number" value="1" class="number_input">
+                                </div>
+                                <div class="numeric_plus" onclick="plusNum(this)">
+                                    <svg class="svg-plus">
+                                        <use xlink:href="#svg-plus"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lc_wrap_price">
+                            <div class="lwp_top">
+                                <div class="wrap_svg_border">
+                                    <svg class="svg-heart">
+                                        <use xlink:href="#svg-heart"></use>
+                                    </svg>
+                                </div>
+                                <div class="wrap_svg_border">
+                                    <svg class="svg-busket">
+                                        <use xlink:href="#svg-busket"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="lwp_price">
+                                24 999 ₴
+                            </div>
                         </div>
                     </div>
-                    <div class="lc_wrap_price">
-
+                    <div class="lc_item">
+                        <div class="wrap_img">
+                            <picture><source srcset="./img/busket_img.webp"type="image/webp"><img src="./img/busket_img.png" alt="img"></picture>
+                        </div>
+                        <div class="lc_wrap_name">
+                            <div class="lc_name">
+                                Электросамокат Название длинное-предлинное
+                            </div>
+                            <div class="wrap_numeric">
+                                <div class="numeric_minus" onclick="minusNum(this)">
+                                    <svg class="svg-minus">
+                                        <use xlink:href="#svg-minus"></use>
+                                    </svg>
+                                </div>
+                                <div class="wrap_number_input">
+                                    <input type="number" value="1" class="number_input">
+                                </div>
+                                <div class="numeric_plus" onclick="plusNum(this)">
+                                    <svg class="svg-plus">
+                                        <use xlink:href="#svg-plus"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lc_wrap_price">
+                            <div class="lwp_top">
+                                <div class="wrap_svg_border active">
+                                    <svg class="svg-heart">
+                                        <use xlink:href="#svg-heart"></use>
+                                    </svg>
+                                </div>
+                                <div class="wrap_svg_border">
+                                    <svg class="svg-busket">
+                                        <use xlink:href="#svg-busket"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="lwp_price">
+                                24 999 ₴
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lc_item">
+                        <div class="wrap_img">
+                            <picture><source srcset="./img/busket_img.webp"type="image/webp"><img src="./img/busket_img.png" alt="img"></picture>
+                        </div>
+                        <div class="lc_wrap_name">
+                            <div class="lc_name">
+                                Электросамокат Название длинное-предлинное
+                            </div>
+                            <div class="wrap_numeric">
+                                <div class="numeric_minus" onclick="minusNum(this)">
+                                    <svg class="svg-minus">
+                                        <use xlink:href="#svg-minus"></use>
+                                    </svg>
+                                </div>
+                                <div class="wrap_number_input">
+                                    <input type="number" value="1" class="number_input">
+                                </div>
+                                <div class="numeric_plus" onclick="plusNum(this)">
+                                    <svg class="svg-plus">
+                                        <use xlink:href="#svg-plus"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lc_wrap_price">
+                            <div class="lwp_top">
+                                <div class="wrap_svg_border">
+                                    <svg class="svg-heart">
+                                        <use xlink:href="#svg-heart"></use>
+                                    </svg>
+                                </div>
+                                <div class="wrap_svg_border">
+                                    <svg class="svg-busket">
+                                        <use xlink:href="#svg-busket"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="lwp_price">
+                                24 999 ₴
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="general_price">
+                <button class="my_btn btn_continue">
+                    Продолжить покупки
+                </button>
+                <div class="gp_price">
+                    49 998 ₴
+                </div>
+            </div>
+            <button class="my_btn btn_order">Оформить заказ</button>
         </div>
     </div>
-
 </div>
 
 <div style="display: none;">
@@ -465,6 +579,8 @@
     </div>
 </div>
 
+
+
 <div class="d-none">
     <svg id="svg-lm-1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M16.5 9C16.5 10.1935 16.0259 11.3381 15.182 12.182C14.3381 13.0259 13.1935 13.5 12 13.5C10.8065 13.5 9.66193 13.0259 8.81802 12.182C7.97411 11.3381 7.5 10.1935 7.5 9C7.5 7.80653 7.97411 6.66193 8.81802 5.81802C9.66193 4.97411 10.8065 4.5 12 4.5C13.1935 4.5 14.3381 4.97411 15.182 5.81802C16.0259 6.66193 16.5 7.80653 16.5 9Z"/>
@@ -525,5 +641,22 @@
 
     <svg id="svg-lm-arr" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.646 0.645993C0.692446 0.59943 0.747622 0.562487 0.808367 0.537281C0.869112 0.512074 0.934233 0.4991 1 0.4991C1.06577 0.4991 1.13089 0.512074 1.19163 0.537281C1.25238 0.562487 1.30755 0.59943 1.354 0.645993L7 6.29299L12.646 0.645993C12.6925 0.599505 12.7477 0.562629 12.8084 0.53747C12.8692 0.512311 12.9343 0.499362 13 0.499362C13.0657 0.499362 13.1308 0.512311 13.1916 0.53747C13.2523 0.562629 13.3075 0.599505 13.354 0.645993C13.4005 0.692481 13.4374 0.74767 13.4625 0.80841C13.4877 0.869149 13.5006 0.93425 13.5006 0.999993C13.5006 1.06574 13.4877 1.13084 13.4625 1.19158C13.4374 1.25232 13.4005 1.30751 13.354 1.35399L7.354 7.35399C7.30756 7.40056 7.25238 7.4375 7.19163 7.46271C7.13089 7.48791 7.06577 7.50089 7 7.50089C6.93423 7.50089 6.86911 7.48791 6.80837 7.46271C6.74762 7.4375 6.69245 7.40056 6.646 7.35399L0.646 1.35399C0.599437 1.30755 0.562494 1.25237 0.537288 1.19163C0.512081 1.13088 0.499107 1.06576 0.499107 0.999993C0.499107 0.934226 0.512081 0.869105 0.537288 0.80836C0.562494 0.747615 0.599437 0.692439 0.646 0.645993Z" />
+    </svg>
+</div>
+
+<div style="display: none;">
+    <svg id="svg-minus" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 1C0.5 0.83424 0.565848 0.675269 0.683058 0.558058C0.800269 0.440848 0.95924 0.375 1.125 0.375H14.875C15.0408 0.375 15.1997 0.440848 15.3169 0.558058C15.4342 0.675269 15.5 0.83424 15.5 1C15.5 1.16576 15.4342 1.32473 15.3169 1.44194C15.1997 1.55915 15.0408 1.625 14.875 1.625H1.125C0.95924 1.625 0.800269 1.55915 0.683058 1.44194C0.565848 1.32473 0.5 1.16576 0.5 1Z"/>
+    </svg>
+    <svg id="svg-plus" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0.5C8.16576 0.5 8.32473 0.565848 8.44194 0.683058C8.55915 0.800269 8.625 0.95924 8.625 1.125V7.375H14.875C15.0408 7.375 15.1997 7.44085 15.3169 7.55806C15.4342 7.67527 15.5 7.83424 15.5 8C15.5 8.16576 15.4342 8.32473 15.3169 8.44194C15.1997 8.55915 15.0408 8.625 14.875 8.625H8.625V14.875C8.625 15.0408 8.55915 15.1997 8.44194 15.3169C8.32473 15.4342 8.16576 15.5 8 15.5C7.83424 15.5 7.67527 15.4342 7.55806 15.3169C7.44085 15.1997 7.375 15.0408 7.375 14.875V8.625H1.125C0.95924 8.625 0.800269 8.55915 0.683058 8.44194C0.565848 8.32473 0.5 8.16576 0.5 8C0.5 7.83424 0.565848 7.67527 0.683058 7.55806C0.800269 7.44085 0.95924 7.375 1.125 7.375H7.375V1.125C7.375 0.95924 7.44085 0.800269 7.55806 0.683058C7.67527 0.565848 7.83424 0.5 8 0.5V0.5Z" />
+    </svg>
+
+    <svg id="svg-busket" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.125 4.125C4.22446 4.125 4.31984 4.16451 4.39016 4.23484C4.46049 4.30516 4.5 4.40054 4.5 4.5V9C4.5 9.09946 4.46049 9.19484 4.39016 9.26517C4.31984 9.33549 4.22446 9.375 4.125 9.375C4.02554 9.375 3.93016 9.33549 3.85984 9.26517C3.78951 9.19484 3.75 9.09946 3.75 9V4.5C3.75 4.40054 3.78951 4.30516 3.85984 4.23484C3.93016 4.16451 4.02554 4.125 4.125 4.125V4.125ZM6 4.125C6.09946 4.125 6.19484 4.16451 6.26517 4.23484C6.33549 4.30516 6.375 4.40054 6.375 4.5V9C6.375 9.09946 6.33549 9.19484 6.26517 9.26517C6.19484 9.33549 6.09946 9.375 6 9.375C5.90054 9.375 5.80516 9.33549 5.73484 9.26517C5.66451 9.19484 5.625 9.09946 5.625 9V4.5C5.625 4.40054 5.66451 4.30516 5.73484 4.23484C5.80516 4.16451 5.90054 4.125 6 4.125V4.125ZM8.25 4.5C8.25 4.40054 8.21049 4.30516 8.14017 4.23484C8.06984 4.16451 7.97446 4.125 7.875 4.125C7.77554 4.125 7.68016 4.16451 7.60983 4.23484C7.53951 4.30516 7.5 4.40054 7.5 4.5V9C7.5 9.09946 7.53951 9.19484 7.60983 9.26517C7.68016 9.33549 7.77554 9.375 7.875 9.375C7.97446 9.375 8.06984 9.33549 8.14017 9.26517C8.21049 9.19484 8.25 9.09946 8.25 9V4.5Z" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.875 2.25C10.875 2.44891 10.796 2.63968 10.6553 2.78033C10.5147 2.92098 10.3239 3 10.125 3H9.75V9.75C9.75 10.1478 9.59196 10.5294 9.31066 10.8107C9.02936 11.092 8.64782 11.25 8.25 11.25H3.75C3.35218 11.25 2.97064 11.092 2.68934 10.8107C2.40804 10.5294 2.25 10.1478 2.25 9.75V3H1.875C1.67609 3 1.48532 2.92098 1.34467 2.78033C1.20402 2.63968 1.125 2.44891 1.125 2.25V1.5C1.125 1.30109 1.20402 1.11032 1.34467 0.96967C1.48532 0.829018 1.67609 0.75 1.875 0.75H4.5C4.5 0.551088 4.57902 0.360322 4.71967 0.21967C4.86032 0.0790176 5.05109 0 5.25 0L6.75 0C6.94891 0 7.13968 0.0790176 7.28033 0.21967C7.42098 0.360322 7.5 0.551088 7.5 0.75H10.125C10.3239 0.75 10.5147 0.829018 10.6553 0.96967C10.796 1.11032 10.875 1.30109 10.875 1.5V2.25ZM3.0885 3L3 3.04425V9.75C3 9.94891 3.07902 10.1397 3.21967 10.2803C3.36032 10.421 3.55109 10.5 3.75 10.5H8.25C8.44891 10.5 8.63968 10.421 8.78033 10.2803C8.92098 10.1397 9 9.94891 9 9.75V3.04425L8.9115 3H3.0885ZM1.875 2.25V1.5H10.125V2.25H1.875Z"/>
+    </svg>
+    <svg id="svg-heart" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.00033 11.4542L5.15449 10.6842C2.15033 7.96 0.166992 6.16333 0.166992 3.95833C0.166992 2.16167 1.57866 0.75 3.37533 0.75C4.39033 0.75 5.36449 1.2225 6.00033 1.96917C6.63616 1.2225 7.61033 0.75 8.62533 0.75C10.422 0.75 11.8337 2.16167 11.8337 3.95833C11.8337 6.16333 9.85033 7.96 6.84616 10.69L6.00033 11.4542Z"/>
     </svg>
 </div>
