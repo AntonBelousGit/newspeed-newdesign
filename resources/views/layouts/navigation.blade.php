@@ -25,9 +25,11 @@
                     <span class="icon icon_tel"></span>
                     <a href="#">+7 (000) 000-00-10</a>
                     <span class="icon icon_arr_bottom"></span>
-                    <!--                <a href="#">+7 (000) 000-00-10</a>-->
-                    <!--                <a href="#">+7 (000) 000-00-10</a>-->
-                    <!--                <a href="#">+7 (000) 000-00-10</a>-->
+                    <div class="wrap_tel_absolute">
+                        <a href="#">+7 (000) 000-00-10</a>
+                        <a href="#">+7 (000) 000-00-10</a>
+                        <a href="#">+7 (000) 000-00-10</a>
+                    </div>
                 </div>
                 <div class="wrap_lang">
                     <a href="#">Ua</a>
@@ -61,6 +63,11 @@
                         <a href="#" class="icon icon_scales"><span>28</span></a>
                         <a href="{{ route('wishlist') }}" class="icon icon_heart"><span>28</span></a>
                         <a href="#" class="icon icon_basket"><span>28</span></a>
+                    </div>
+                    <div class="wrap_panel_icons_mobile">
+                        <a href="#" class="icon icon_basket4">
+                            <span>12</span>
+                        </a>
                     </div>
                 </div>
             </div>

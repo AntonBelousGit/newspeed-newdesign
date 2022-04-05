@@ -1,5 +1,7 @@
 <script src="{{ asset('js/app.min.js') }}"></script>
+<script src="{{ asset('js/rescript.min.js') }}"></script>
 {{--Add to cart--}}
+
 <script>
     $(document).on('click', '.add_to_cart', function (e) {
         e.preventDefault();
