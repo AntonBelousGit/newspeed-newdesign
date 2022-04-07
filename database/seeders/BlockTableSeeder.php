@@ -28,7 +28,7 @@ class BlockTableSeeder extends Seeder
             [
                 'title' => 'Sliders Themplate',
                 'slug' => 'sliders_template',
-                'status' => '1', 'model' => 'galleriesRepositories',
+                'status' => '0', 'model' => 'galleriesRepositories',
                 'themplate' => 'sliders',
                 'position' => '2',
             ],
