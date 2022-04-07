@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Menu;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
@@ -31,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(!app()->isProduction());
         Schema::defaultStringLength(191);
 
-        $catalog = Menu::orderBy('sort','desc')->whereNull('menu_id')->where('status',1)->with('children.children')->get();
+        $catalog = Category::orderBy('sort','desc')->whereNull('category_id')->where('status',"true")->with('childrenCategories.childrenCategories')->get();
         View::share(['catalog' => $catalog]);
     }
 }

@@ -89,7 +89,16 @@
                                                name="recomend" {{ old('recomend') == 'on' ? 'checked' : '' }}>
                                         <span>Рекомендуемые</span>
                                     </label>
-                                    <p id="error-checkbox"></p>
+                                    <label class="fancy-checkbox">
+                                        <input type="checkbox" name="menu"
+                                               data-parsley-errors-container="#error-checkbox" {{ old('menu') == 'on' ? 'checked' : '' }}>
+                                        <span>Add to menu</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Порядковый номер</label>
+                                    <input type="number" step="1" min="1" name="sort" id="title" class="form-control"
+                                           required value="1" style="max-width: 300px">
                                 </div>
                                 <div class="form-group">
                                     <label>Статус</label>

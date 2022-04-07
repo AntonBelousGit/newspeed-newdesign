@@ -458,13 +458,13 @@
                             <li><a href="{{ route('admin.blogs.create') }}">New Post</a></li>
                         </ul>
                     </li>
-                    <li @if(Route::is('admin.menu.*')) class="active" @endif>
-                        <a href="{{ route('admin.menu.index') }}" class="has-arrow"><i
-                                class="icon-globe"></i><span>Menu</span></a>
-                        <ul>
-                            <li><a href="{{ route('admin.menu.index') }}">Menu List</a></li>
-                        </ul>
-                    </li>
+{{--                    <li @if(Route::is('admin.menu.*')) class="active" @endif>--}}
+{{--                        <a href="{{ route('admin.menu.index') }}" class="has-arrow"><i--}}
+{{--                                class="icon-globe"></i><span>Menu</span></a>--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="{{ route('admin.menu.index') }}">Menu List</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                     <li @if(Route::is('admin.contacts.*')) class="active" @endif>
                         <a href="{{ route('admin.contacts.edit', 'contacts') }}" class=""><i
                                 class="icon-envelope"></i><span>Contacts</span></a>

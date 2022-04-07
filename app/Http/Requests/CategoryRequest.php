@@ -30,6 +30,7 @@ class CategoryRequest extends FormRequest
             'description' => 'required|string|max:500',
             'slug' => 'required|string|max:500',
             'status' => 'required',
+            'sort' => 'integer',
             'popular' => 'string|nullable',
             'recomend' => 'string|nullable',
             'image' => 'string|nullable',

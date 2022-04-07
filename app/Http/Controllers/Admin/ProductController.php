@@ -81,8 +81,9 @@ class ProductController extends Controller
     {
         $categories = $this->categoryService->getAllCategory();
         $brands = $this->brandService->getAllBrand();
+        $attributes = $this->attributeService->getAttributeApi();
         $product = $this->productService->getProductWithAttributeByID($id);
-        return view('admin.products.edit', compact('product', 'categories','brands'));
+        return view('admin.products.edit', compact('product', 'categories','brands','attributes'));
     }
 
     /**

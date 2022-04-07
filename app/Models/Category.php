@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
@@ -15,7 +14,7 @@ class Category extends Model
 
 
     protected $fillable = [
-        'status', 'slug', 'category_id', 'name', 'id', 'description', 'seo_description', 'popular', 'photo', 'recomend', 'image'
+        'status', 'slug', 'category_id', 'name', 'id', 'description', 'seo_description', 'popular', 'photo', 'recomend', 'image', 'menu', 'sort'
     ];
 
 //    public function categories()
@@ -35,7 +34,6 @@ class Category extends Model
 
     public static function add($fields) // Добавление события
     {
-        //dd($fields);
         $category = new static;
         $category->fill($fields);
         // $category->photo = $fields['gallery'][0];

@@ -16,7 +16,7 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
 //        $this->call(CategoryFactory::class);
-        Category::factory(2)->create()
+        Category::factory(2)->create(['menu'=> 'on'])
             ->each(function ($category) {
                 Category::factory(3)->create(['category_id' => $category->id])
                     ->each(function ($child_cat) {

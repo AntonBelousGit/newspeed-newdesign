@@ -4,7 +4,7 @@
         <a href="{{route( 'category',['slug'=>$catalog_item->slug])}}">
             <div class="text_catalog">
                 <div class="icon">
-                    <img src="{{asset('assets/uploads/menu/')}}/{{$catalog_item->icon}}" alt="img">
+                    <img src="{{asset('assets/uploads/category/')}}/{{$catalog_item->image}}" alt="img">
                 </div>
                 {{$catalog_item->name}}
             </div>
@@ -12,10 +12,10 @@
         </a>
         <div class="wrap_un_list">
             <div class="un_list">
-                @foreach($catalog_item->children as $item)
+                @foreach($catalog_item->childrenCategories as $item)
                 <div class="wrap_list_un_menu">
                     <a class="title_un_menu" href="{{route('category',['slug'=>$item->slug])}}">{{$item->name}}</a>
-                    @foreach($item->children as $child)
+                    @foreach($item->childrenCategories as $child)
                     <div class="un_menu">
                         <a href="{{route('category',['slug'=>$child->slug])}}">{{$child->name}}</a>
                     </div>

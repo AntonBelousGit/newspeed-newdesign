@@ -300,10 +300,10 @@
                                                 <select class="js-example-basic-single first_select" name=""
                                                         onchange="getSelect(this)">
                                                     <option value="Выберите" disabled selected>Выберите</option>
-                                                    {{-- @foreach($attributes as $item)--}}
+                                                     @foreach($attributes as $item)
                                                     <option
-                                                        value="{{-- {{$item->id}} --}}">{{-- {{$item->name}}--}}</option>
-                                                    {{-- @endforeach --}}
+                                                        value=" {{$item->id}} "> {{$item->name}}</option>
+                                                     @endforeach
 
                                                 </select>
                                             </td>
