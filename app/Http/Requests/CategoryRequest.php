@@ -34,6 +34,7 @@ class CategoryRequest extends FormRequest
             'popular' => 'string|nullable',
             'recomend' => 'string|nullable',
             'image' => 'string|nullable',
+            'icon' => 'string|nullable',
         ];
     }
 

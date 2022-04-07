@@ -25,6 +25,7 @@ class CreateCategoriesTable extends Migration
             $table->string('recomend')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('image')->nullable();
+            $table->string('icon')->nullable();
             $table->string('menu')->default('off');
             $table->integer('sort')->default(1);
 

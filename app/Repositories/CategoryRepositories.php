@@ -55,7 +55,7 @@ class CategoryRepositories extends CoreRepository
 
     public function searchChildrenByParent($id)
     {
-        return $this->startCondition()->where('category_id',$id)->get(['id','name','slug']);
+        return $this->startCondition()->where('category_id',$id)->get(['id','name','slug','sort']);
     }
 
     public function getCategoryWithParent()

@@ -35,7 +35,7 @@ $(function() {
                     $('.gallery-single .row>div:first-of-type').html();
                     $('.gallery-single .row>div:first-of-type').html(`
                     <a href="/assets/uploads/category/${response.filename}" class="img-gallery-box" data-fancybox="images" data-width="1200" style="background-image: url(/assets/uploads/category/${response.filename}); background-repeat: no-repeat">
-                        <div class="trash-block" data-url="${response.filename}" onclick="removePhotoSingle(this,this.getAttribute('data-url'));return false;"></div>
+                        <div class="trash-block" data-url="${response.filename}" onclick="removePhotoSingle(this,this.getAttribute('data-url'),'gallery-single');return false;"></div>
                     </a>
                     <input type="hidden" name="image" value="${response.filename}">`);
                 },
@@ -54,6 +54,58 @@ $(function() {
             })
         }
     });
+
+
+    $('#addSingleIconInput').on('change', function() {
+        if(count++ <= DEFAULT_AMOUNT_PRODUCTS_IMAGES) {
+            let data = new FormData();
+            let id = $('.gallery').attr('data-id');
+
+            data.append('photo', this.files[0]);
+            data.append('product_id',id);
+
+
+            $('.gallery-single-icon .row>div:first-of-type').before(`<div class="col-md-3">
+            <img src="/img/ajax-loader.gif" id="add-photo-loader-icon" class="ajax-loader">
+        </div>`);
+            $('#add-photo-loader-icon').css('display', 'block');
+            $.ajax({
+                url: '/admin/categories/add-photo',
+                type: "POST",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (response) {
+                    console.log(response);
+                    // $('.gallery-single .row>div:first-of-type').remove();
+                    $('.gallery-single-icon .row>div:first-of-type').html();
+                    $('.gallery-single-icon .row>div:first-of-type').html(`
+                    <a href="/assets/uploads/category/${response.filename}" class="img-gallery-box" data-fancybox="images" data-width="1200" style="background-image: url(/assets/uploads/category/${response.filename}); background-repeat: no-repeat">
+                        <div class="trash-block" data-url="${response.filename}" onclick="removePhotoSingle(this,this.getAttribute('data-url'),'gallery-single-icon');return false;"></div>
+                    </a>
+                    <input type="hidden" name="icon" value="${response.filename}">`);
+                },
+
+                error: function (response) {
+                    console.log(response)
+                    let errorMessage = '';
+                    $('.gallery .row>div:first-of-type').remove();
+                    if (response.status === 422) {
+                        errorMessage = response.responseJSON.errors.photo[0];
+                    } else if (response.status === 500) {
+                        errorMessage = 'Внутренняя ошибка сервера';
+                    }
+                    $('#photo-error-message').text(errorMessage);
+                }
+            })
+        }
+    });
+
+
+
+
+
     // склик по input-image
     $('.imgInp').change(function(){
         var imgDiv=$(this).data('id');

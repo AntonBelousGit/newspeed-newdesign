@@ -158,41 +158,6 @@
                                         <small class="form-text text-muted">Изображения. До 1мб файл</small>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Icon</label>
-                                    <div class="gallery-single-icon" data-id="{{$category->id}}">
-                                        <div class="row">
-                                            {{--                                                                        {{dd($images)}}--}}
-                                            @if(!is_null($category->icon))
-                                                <div class="col-md-3">
-                                                    <a href="{{asset('assets/uploads/category')}}/{{$category->icon}}"
-                                                       class="img-gallery-box" data-fancybox="images" data-width="1200"
-                                                       style="background-image: url(/assets/uploads/category/{{$category->icon}}); background-repeat: no-repeat"
-                                                       onclick="event.preventDefault()">
-                                                        <div class="trash-block" data-url="{{$category->icon}}"
-                                                             onclick="removePhoto(this,this.getAttribute('data-url'),'gallery-single-icon');return false;"></div>
-                                                    </a>
-                                                    <input type="hidden" name="icon" value="{{$category->icon}}">
-                                                </div>
-                                            @endif
-                                            @error('icon')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                            <div class="col-md-3">
-                                                <label for="addSingleIconInput" class="add-photo">
-                                                    <input type="file" name="file" id="addSingleIconInput"
-                                                           class="input-file-hidden">
-                                                    <div class="add-photo-title text-center">
-                                                        <img src="{{asset('img/plus.svg')}}" style="width: 20px;">
-                                                        <div class="dark-blue font-12 medium">Добавить фото</div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div id="photo-error-message" class="error-message mb-1"></div>
-                                        <small class="form-text text-muted">Изображения. До 1мб файл</small>
-                                    </div>
-                                </div>
                                 <div class="body">
 
                                     {{--                            <input type="file" id="dropify-event" data-default-file="{{asset('adminka/assets/images/image-gallery/1.jpg')}}">--}}

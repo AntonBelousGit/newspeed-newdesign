@@ -1,6 +1,6 @@
-function removePhoto(el, name) {
+function removePhoto(el, name, removeClass) {
     console.log(name);
-    let id = $('.gallery-single').attr('data-id');
+    let id = $('.removeClass').attr('data-id');
     $.ajax({
         url: '/admin/categories/remove-photo',
         type: "POST",

@@ -14,7 +14,7 @@ class Category extends Model
 
 
     protected $fillable = [
-        'status', 'slug', 'category_id', 'name', 'id', 'description', 'seo_description', 'popular', 'photo', 'recomend', 'image', 'menu', 'sort'
+        'status', 'slug', 'category_id', 'name', 'id', 'description', 'seo_description', 'popular', 'photo', 'recomend', 'image', 'menu', 'sort','icon'
     ];
 
 //    public function categories()

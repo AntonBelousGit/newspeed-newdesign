@@ -135,6 +135,25 @@
                                         <small class="form-text text-muted">Изображения. До 200кб файл</small>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>Icon</label>
+                                    <div class="gallery-single-icon" data-id="">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="addSingleIconInput" class="add-photo">
+                                                    <input type="file" name="file" id="addSingleIconInput"
+                                                           class="input-file-hidden">
+                                                    <div class="add-photo-title text-center">
+                                                        <img src="{{asset('img/plus.svg')}}" style="width: 20px;">
+                                                        <div class="dark-blue font-12 medium">Добавить фото</div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div id="photo-error-message" class="error-message mb-1"></div>
+                                        <small class="form-text text-muted">Изображения. До 200кб файл</small>
+                                    </div>
+                                </div>
                                 <div class="body">
 
                                     {{--                            <input type="file" id="dropify-event" data-default-file="{{asset('adminka/assets/images/image-gallery/1.jpg')}}">--}}

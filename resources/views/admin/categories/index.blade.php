@@ -223,7 +223,7 @@
                     for(let i = 0; i < result.length; i++) {
                         str = str + '<tr role="row" data-id="' + result[i].id + '" onclick="addSubCategory(this)">' +
                                         '<td class="sorting_1" colspan="1" rowspan="1" onclick="addSubCategory"><div>' + result[i].name +'</div></td>' +
-                                        '<td colspan="1" rowspan="1">1</td>' +
+                                        '<td colspan="1" rowspan="1">' + result[i].sort +'</td>' +
                                         '<td class="actions" colspan="1" rowspan="1">' +
                                         '<a href="http://127.0.0.1:8000/admin/categories/'+ result[i].id +'/edit"' +
                                         'class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"' +

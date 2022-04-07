@@ -53,7 +53,12 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $categories = $this->categoryService->getAllCategoryWithoutCurentID($category->id);
-        return view('admin.categories.edit', compact('categories', 'category'));
+
+        if (is_null($category->category_id)) {
+            return view('admin.categories.edit', compact('categories', 'category'));
+        }
+
+        return view('admin.categories.edit-child', compact('categories', 'category'));
     }
 
     public function update(CategoryRequest $request, Category $category)
