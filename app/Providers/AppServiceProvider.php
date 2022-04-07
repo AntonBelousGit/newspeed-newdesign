@@ -32,7 +32,11 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(!app()->isProduction());
         Schema::defaultStringLength(191);
 
-        $catalog = Category::orderBy('sort','desc')->whereNull('category_id')->where('status',"true")->with('childrenCategories.childrenCategories')->get();
+        $catalog = Category::orderBy('sort','asc')->whereNull('category_id')->where('status',"true")->with('childrenCategories',function ($q) {
+            $q->orderBy('sort','asc')->with('childrenCategories',function ($j) {
+                $j->orderBy('sort','asc');
+            });
+        })->get();
         View::share(['catalog' => $catalog]);
     }
 }
