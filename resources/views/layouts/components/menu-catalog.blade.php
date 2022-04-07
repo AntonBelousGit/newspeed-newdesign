@@ -4,7 +4,7 @@
         <a href="{{route( 'category',['slug'=>$catalog_item->slug])}}">
             <div class="text_catalog">
                 <div class="icon">
-                    <img src="{{asset('assets/uploads/category/')}}/{{$catalog_item->image}}" alt="img">
+                    <img src="{{asset('assets/uploads/category/')}}/{{$catalog_item->icon}}" alt="img">
                 </div>
                 {{$catalog_item->name}}
             </div>
