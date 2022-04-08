@@ -49,8 +49,9 @@
                                      data-mfield-options='{"section": ".group","btnAdd":"#btnAdd-1","btnRemove":".btnRemove"}'>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button type="button" id="btnAdd-1" class="btn btn-primary mb-1"><i
-                                                        class="fa fa-plus-circle"></i></button>
+                                            <button type="button" id="btnAdd-1" class="btn btn-primary" style="display: none">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="row group">
@@ -64,7 +65,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success mt-3">Submit</button>
+                                <div class="wrap_buttons mt-3" style="display:flex; align-items: center; grid-gap: 10px;">
+                                    <button type="button" id="btnAdd-2" class="btn btn-primary" onclick="clickbtnAdd1()">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                    <button type="submit" class="btn btn-success ">Submit</button>
+                                    <script>
+                                    function clickbtnAdd1() {
+                                        $('#btnAdd-1').trigger('click');
+                                    }
+                                    </script>
+                                </div>
                             </form>
                             <div class="row mt-4">
                                 <div class="table-responsive">
