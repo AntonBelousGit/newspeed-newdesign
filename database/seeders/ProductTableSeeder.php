@@ -26,7 +26,7 @@ class ProductTableSeeder extends Seeder
                 'featured' => true,
                 'quantity' => 10,
                 'category_id' => 1,
-                'attribute' => ['size' => 'medium', 'color' => 'blue'],
+                'attribute' => ['size' => ['medium'], 'color' => ['blue']],
                 'SKU'=> 'SKU'
             ]
         );

@@ -36,26 +36,26 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn_save">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                             width="1280.000000pt" height="1280.000000pt" viewBox="0 0 1280.000000 1280.000000"
-                             preserveAspectRatio="xMidYMid meet">
-                            <metadata>
-                            Created by potrace 1.15, written by Peter Selinger 2001-2017
-                            </metadata>
-                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-                             stroke="none">
-                            <path d="M0 6400 l0 -6400 6400 0 6400 0 0 5200 0 5200 -1200 1200 -1200 1200
+                                 width="1280.000000pt" height="1280.000000pt" viewBox="0 0 1280.000000 1280.000000"
+                                 preserveAspectRatio="xMidYMid meet">
+                                <metadata>
+                                    Created by potrace 1.15, written by Peter Selinger 2001-2017
+                                </metadata>
+                                <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+                                   stroke="none">
+                                    <path d="M0 6400 l0 -6400 6400 0 6400 0 0 5200 0 5200 -1200 1200 -1200 1200
                             -400 0 -400 0 0 -2600 0 -2600 -3200 0 -3200 0 0 2600 0 2600 -1600 0 -1600 0
                             0 -6400z m11200 -2800 l0 -2800 -4800 0 -4800 0 0 2800 0 2800 4800 0 4800 0
                             0 -2800z"/>
-                            <path d="M2400 5200 l0 -400 4000 0 4000 0 0 400 0 400 -4000 0 -4000 0 0
+                                    <path d="M2400 5200 l0 -400 4000 0 4000 0 0 400 0 400 -4000 0 -4000 0 0
                             -400z"/>
-                            <path d="M2400 3600 l0 -400 4000 0 4000 0 0 400 0 400 -4000 0 -4000 0 0
+                                    <path d="M2400 3600 l0 -400 4000 0 4000 0 0 400 0 400 -4000 0 -4000 0 0
                             -400z"/>
-                            <path d="M2400 2000 l0 -400 4000 0 4000 0 0 400 0 400 -4000 0 -4000 0 0
+                                    <path d="M2400 2000 l0 -400 4000 0 4000 0 0 400 0 400 -4000 0 -4000 0 0
                             -400z"/>
-                            <path d="M7200 10200 l0 -1800 800 0 800 0 0 1800 0 1800 -800 0 -800 0 0
+                                    <path d="M7200 10200 l0 -1800 800 0 800 0 0 1800 0 1800 -800 0 -800 0 0
                             -1800z"/>
-                            </g>
+                                </g>
                             </svg>
                         </button>
                     </div>
@@ -101,7 +101,8 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="label_input"><span class="star">*</span>Название продукта</label>
+                                                            <label class="label_input"><span class="star">*</span>Название
+                                                                продукта</label>
                                                             <input type="text" name="name" class="form-control"
                                                                    id="title" required="true"
                                                                    value="{{$product->name}}">
@@ -121,7 +122,8 @@
                                                             @enderror
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="label_input"><span class="star">*</span>Короткое описание</label>
+                                                            <label class="label_input"><span class="star">*</span>Короткое
+                                                                описание</label>
                                                             <textarea class="form-control" rows="5" cols="30"
                                                                       name="short_description"
                                                                       required>{{$product->short_description}}</textarea>
@@ -130,7 +132,8 @@
                                                             @enderror
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="label_input"><span class="star">*</span>SEO Описание</label>
+                                                            <label class="label_input"><span class="star">*</span>SEO
+                                                                Описание</label>
                                                             <textarea class="form-control" rows="5" cols="30"
                                                                       name="seo_description">{{$product->seo_description}}</textarea>
                                                             @error('seo_description')
@@ -150,7 +153,8 @@
                                                             @enderror
                                                             <p id="error-checkbox"></p>
 
-                                                            <label class="label_input"><span class="star">*</span>SKU</label>
+                                                            <label class="label_input"><span
+                                                                    class="star">*</span>SKU</label>
                                                             <input type="text" name="SKU" class="form-control"
                                                                    required="true"
                                                                    value="{{$product->SKU}}">
@@ -164,14 +168,16 @@
                                                             @error('quantity')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
-                                                            <label class="label_input"><span class="star">*</span>Цена</label>
+                                                            <label class="label_input"><span
+                                                                    class="star">*</span>Цена</label>
                                                             <input type="number" min="0" step="0.01"
                                                                    name="regular_price" class="form-control"
                                                                    required="true" value="{{$product->regular_price}}">
                                                             @error('regular_price')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                             @enderror
-                                                            <label class="label_input"><span class="star">*</span>Акционная цена</label>
+                                                            <label class="label_input"><span class="star">*</span>Акционная
+                                                                цена</label>
                                                             <input type="number" min="0" step="0.01" name="sale_price"
                                                                    class="form-control"
                                                                    required="true" value="{{$product->sale_price}}">
@@ -203,7 +209,8 @@
                                                             @enderror
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="label_input"><span class="star">*</span>Главная картинка</label>
+                                                            <label class="label_input"><span class="star">*</span>Главная
+                                                                картинка</label>
                                                             <div class="gallery-single" data-id="{{$product->id}}">
                                                                 <div class="row">
                                                                     {{--                                                                        {{dd($images)}}--}}
@@ -323,30 +330,25 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
-{{--                                        @dump($product->attribute)--}}
-
-                                        @foreach($product->attribute as $key => $value)
-{{--                                            @dump($key)--}}
-{{--                                            @dump($value)--}}
-{{--                                            @dump($attributes->where('code',$key)->first()->values)--}}
-                                            @foreach($value as $attribute_item)
-{{--                                                @dump($attribute_item)--}}
+                                        @forelse($product->attribute as $key => $value)
+                                            @forelse($value as $attribute_item)
                                                 <tr>
-
                                                     <td style="width: 20%;">
                                                         <select class="js-example-basic-single first_select" name=""
                                                                 onchange="getSelect(this)">
                                                             @foreach($attributes as $item)
-                                                                <option value="{{$item->code}}" {{$item->code == $key? 'selected':''}}> {{$item->name}} </option>
+                                                                <option
+                                                                    value="{{$item->code}}" {{$item->code == $key? 'selected':''}}> {{$item->name}} </option>
                                                             @endforeach
 
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <select class="js-example-basic-single" name="state[{{$key}}][]" onchange="getSelect(this)">
+                                                        <select class="js-example-basic-single" name="state[{{$key}}][]"
+                                                                onchange="getSelect(this)">
                                                             @foreach($attributes->where('code',$key)->first()->values as $item)
-                                                                <option value="{{$item->value}}" {{$item->value == $attribute_item? 'selected':''}}> {{$item->value}} </option>
+                                                                <option
+                                                                    value="{{$item->value}}" {{$item->value == $attribute_item? 'selected':''}}> {{$item->value}} </option>
                                                             @endforeach
                                                         </select>
                                                     </td>
@@ -356,10 +358,13 @@
                                                         </button>
                                                     </td>
                                                 </tr>
-                                            @endforeach
-                                        @endforeach
-                                        <tr>
+                                            @empty
 
+                                            @endforelse
+                                        @empty
+
+                                        @endforelse
+                                        <tr>
                                             <td style="width: 20%;">
                                                 <select class="js-example-basic-single first_select" name=""
                                                         onchange="getSelect(this)">

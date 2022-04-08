@@ -85,13 +85,13 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-//        try {
+        try {
             $validated_data = collect($request);
             $this->productService->updateProduct($validated_data, $product);
-//        } catch (Throwable $e) {
-//            report($e);
-//            abort(500);
-//        }
+        } catch (Throwable $e) {
+            report($e);
+            abort(500);
+        }
 
         return redirect()->route('admin.products.index');
     }
