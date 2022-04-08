@@ -186,6 +186,11 @@
         width: 31.7%;
         padding: 0 0 0 60px;
     }
+
+    .dt-control div,
+    .sorting_1 div {
+        cursor: pointer;
+    }
 </style>
 
 @section('scripts')
