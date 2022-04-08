@@ -15,11 +15,13 @@
                 @foreach($catalog_item->childrenCategories as $item)
                 <div class="wrap_list_un_menu">
                     <a class="title_un_menu" href="{{route('category',['slug'=>$item->slug])}}">{{$item->name}}</a>
-                    @foreach($item->childrenCategories as $child)
+
                     <div class="un_menu">
+                    @foreach($item->childrenCategories as $child)
                         <a href="{{route('category',['slug'=>$child->slug])}}">{{$child->name}}</a>
-                    </div>
                     @endforeach
+                    </div>
+
                 </div>
                 @endforeach
             </div>
