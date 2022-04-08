@@ -19,12 +19,16 @@ class AttributeRepository extends CoreRepository
     {
         return $this->startCondition()->orderBy('name', 'desc')->get();
     }
+    public function getAttributeApiWithValue()
+    {
+        return $this->startCondition()->orderBy('name', 'desc')->with('values')->get();
+    }
     /**
      * @return Model
      */
     public function getAttributeApi()
     {
-        return $this->startCondition()->orderBy('name', 'desc')->get(['id','name']);
+        return $this->startCondition()->orderBy('name', 'desc')->get(['id','name','code']);
     }
 
     /**
@@ -44,6 +48,11 @@ class AttributeRepository extends CoreRepository
     public function findAttributeById(int $id)
     {
         return $this->startCondition()->with('values')->findOrFail($id);
+    }
+
+    public function findAttributeValueByCode($code)
+    {
+        return $this->startCondition()->with('values')->where('code',$code)->first();
     }
 
 }

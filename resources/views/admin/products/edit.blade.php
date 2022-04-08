@@ -9,7 +9,7 @@
         <div class="block-header">
             <div class="row clearfix">
                 <div class="col-md-6 col-sm-12">
-                    <h2>Создать продукт</h2>
+                    <h2>Обновить продукт</h2>
                 </div>
                 <div class="col-md-6 col-sm-12 text-right">
                     <ul class="breadcrumb">
@@ -42,7 +42,7 @@
                                         <div class="col-md-12">
                                             <div class="card">
                                                 <div class="header">
-                                                    <h2>Создать категорию</h2>
+                                                    <h2>Обновить продукт</h2>
                                                 </div>
                                                 <div class="body">
                                                     <div>
@@ -217,7 +217,8 @@
                                                                 </div>
                                                                 <div id="photo-error-message"
                                                                      class="error-message mb-1"></div>
-                                                                <small class="form-text text-muted">Изображения. До 200КБ
+                                                                <small class="form-text text-muted">Изображения. До
+                                                                    200КБ
                                                                     файл</small>
                                                             </div>
                                                         </div>
@@ -268,7 +269,8 @@
                                                                 </div>
                                                                 <div id="photo-error-message"
                                                                      class="error-message mb-1"></div>
-                                                                <small class="form-text text-muted">Изображения. До 200КБ
+                                                                <small class="form-text text-muted">Изображения. До
+                                                                    200КБ
                                                                     файл</small>
                                                             </div>
                                                         </div>
@@ -295,15 +297,51 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
+{{--                                        @dump($product->attribute)--}}
+
+                                        @foreach($product->attribute as $key => $value)
+{{--                                            @dump($key)--}}
+{{--                                            @dump($value)--}}
+{{--                                            @dump($attributes->where('code',$key)->first()->values)--}}
+                                            @foreach($value as $attribute_item)
+{{--                                                @dump($attribute_item)--}}
+                                                <tr>
+
+                                                    <td style="width: 20%;">
+                                                        <select class="js-example-basic-single first_select" name=""
+                                                                onchange="getSelect(this)">
+                                                            @foreach($attributes as $item)
+                                                                <option value="{{$item->code}}" {{$item->code == $key? 'selected':''}}> {{$item->name}} </option>
+                                                            @endforeach
+
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="js-example-basic-single" name="state[{{$key}}][]" onchange="getSelect(this)">
+                                                            @foreach($attributes->where('code',$key)->first()->values as $item)
+                                                                <option value="{{$item->value}}" {{$item->value == $attribute_item? 'selected':''}}> {{$item->value}} </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td class="text-right" style="width: 20%;">
+                                                        <button type="button" onclick="removeTr(this)">
+                                                            <i class="fa fa-minus-circle"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endforeach
                                         <tr>
+
                                             <td style="width: 20%;">
                                                 <select class="js-example-basic-single first_select" name=""
                                                         onchange="getSelect(this)">
                                                     <option value="Выберите" disabled selected>Выберите</option>
-                                                     @foreach($attributes as $item)
-                                                    <option
-                                                        value=" {{$item->id}} "> {{$item->name}}</option>
-                                                     @endforeach
+                                                    @foreach($attributes as $item)
+                                                        <option
+                                                            value="{{$item->code}}"> {{$item->name}}</option>
+                                                    @endforeach
 
                                                 </select>
                                             </td>
@@ -376,23 +414,28 @@
                     return res;
                 }
 
-                // создание второго селекта после полученных данных
-                function r_handler(elem, respons, id) {
+                function r_handler(elem, respons, code) {
                     var tmpelem = $(elem).parent('td').parent('tr').find('td:nth-child(2)')
-                    var str = '<select class="js-example-basic-single" name="state[' + id + '][]" onchange="addSelect(this)">'
-                    for (var i = 0; i < respons.length; i++) {
-                        str = str + '<option value="' + respons[i].id + '">' + respons[i].value + '</option>'
+
+                    var str = '<select class="js-example-basic-single" name="state[' + code + '][]" onchange="addSelect(this)">'
+                    for (var i = 0; i < respons.values.length; i++) {
+                        str = str + '<option value="' + respons.values[i].value + '">' + respons.values[i].value + '</option>'
                     }
-                    str = str + '<option value="Add" data-for="' + id + '">Добавить</option></select>'
+                    str = str + '<option value="Add" data-for="' + code + '">Добавить</option></select>'
+
                     $(tmpelem).find('.wrap_add_input').remove();
+
                     $(tmpelem).find('select').remove();
                     $(tmpelem).find('span.select2').remove();
+
+
                     $(str).appendTo($(tmpelem))
                     $('.js-example-basic-single').select2();
                 }
 
                 // получение данных в зависимости от выбраного пункта в селекте
                 function getSelect(elem) {
+
                     var r_path = '/attribute/get-value/';
                     var r_args = $(elem).val();
                     // let value = $(elem).find('option:selected').text();
@@ -400,25 +443,26 @@
                         url: r_path,
                         type: "GET",
                         data: {
-                            id: r_args
+                            code: r_args
                         },
                         success: function (response) {
-                            // console.log(response)
                             r_handler(elem, response, r_args)
                         },
                         error: function (response) {
+
                         }
                     });
+
                 }
 
                 // создает селект при добавлении нового атрибута
                 function createSelect(respons) {
-                    console.log(respons)
-                    // var str = '<select class="js-example-basic-single" name="" onchange="getSelect(this)"><option value="Выберите" disabled selected>Выберите</option>'
-                    // for (var i = 0; i < respons.length; i++) {
-                    //     str = str + '<option value="' + respons[i].id + '" name="attribute">' + respons[i].name + '</option>'
-                    // }
-                    // str = str + '</select>'
+                    var str = '<select class="js-example-basic-single" name="" onchange="getSelect(this)"><option value="Выберите" disabled selected>Выберите</option>'
+                    for (var i = 0; i < respons.length; i++) {
+                        str = str + '<option value="' + respons[i].code + '" name="attribute">' + respons[i].name + '</option>'
+                    }
+                    str = str + '</select>'
+
                     $('<tr><td style="width: 20%;">' +
                         str +
                         '</td>' +
@@ -430,26 +474,29 @@
                         '</button>' +
                         '</td>' +
                         '</tr>').appendTo('table.table tbody')
+
                     $('.js-example-basic-single').select2();
                 }
 
                 // добавить новый атрибут
                 function addAttribute() {
-                    // var r_path = '/attribute/get-attribute/';
-                    // $.ajax({
-                    //     url: r_path,
-                    //     type: "POST",
-                    //     success: function (response) {
-                    //         // console.log(response)
-                    //         createSelect(response)
-                    //     },
-                    //     error: function (response) {
-                    //         console.log(response)
-                    //     }
-                    // });
+
+                    var r_path = '/attribute/get-attribute/';
+
+                    $.ajax({
+                        url: r_path,
+                        type: "POST",
+                        success: function (response) {
+                            createSelect(response)
+                        },
+                        error: function (response) {
+                            console.log(response)
+                        }
+                    });
                 }
 
                 function addSelect(elem) {
+                    console.log(elem);
                     if ($(elem).val() == 0) return false
                     if ($(elem).val() == 'Add') {
                         let add_to = $(elem).find("option:selected").attr('data-for');

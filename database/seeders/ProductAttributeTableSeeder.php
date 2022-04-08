@@ -21,6 +21,7 @@ class ProductAttributeTableSeeder extends Seeder
 //            'price' => 100,
             'product_id' => 1,
             'attribute_id' => 1,
+            'attribute_value_id' => 1,
         ]);
 
         ProductAttribute::create([
@@ -30,6 +31,7 @@ class ProductAttributeTableSeeder extends Seeder
 //            'price' => 10,
             'product_id' => 1,
             'attribute_id' => 2,
+            'attribute_value_id' => 2,
         ]);
     }
 }

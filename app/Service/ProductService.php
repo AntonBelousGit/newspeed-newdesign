@@ -34,6 +34,7 @@ class ProductService
     {
         return $this->productRepositories->getProductByID($id);
     }
+
     public function getProductWithAttributeByID(int $id)
     {
         return $this->productRepositories->getProductWithAttributeByID($id);
@@ -70,21 +71,50 @@ class ProductService
         $slug = $data->has('slug') ? $data['slug'] : Str::slug($data['name'] . '-' . Carbon::now()->toDateTimeString(), '-');
         $featured = (bool)$data->has('featured');
         $images = null;
+
         if (isset($data['photos'])) {
             $images = json_encode(array_values($data['photos']), JSON_THROW_ON_ERROR);
         }
+
+        if (isset($data['state']) || isset($data['addAttribute'])) {
+            $state = $data['state'] ?? [];
+            $addAttribute = $data['addAttribute'] ?? [];
+            $data['attribute'] = [];
+
+            foreach ($state as &$value) {
+                foreach ($value as $ket2 => $item) {
+                    if ($item == 'Add') {
+                        unset($value[$ket2]);
+                    }
+                }
+            }
+
+            $data['attribute'] = array_merge_recursive($state, $addAttribute);
+
+            foreach ($addAttribute as $key => $item) {
+                $attribute = Attribute::where('code', $key)->toBase()->first(['id']);
+                dump($attribute);
+                foreach ($item as $attr_new_val) {
+                    if ($attr_new_val) {
+                        AttributeValue::create(['attribute_id' => $attribute->id, 'value' => $attr_new_val ]);
+                    }
+                }
+            }
+        }
+
         $data->forget(['photos', 'file']);
-        $newProduct = $data->except(['state', 'addAtribut']);
+        $newProduct = $data->except(['state', 'addAttribute']);
         $merge = $newProduct->merge(compact('slug', 'featured', 'images'));
+
         $product = (new Product())->create($merge->toArray());
-        $product->save();
 
         return $product;
     }
 
     /**
      */
-    public function updateProduct($data, $product)
+    public
+    function updateProduct($data, $product)
     {
 //        dd($data);
         $featured = (bool)$data->has('featured');
@@ -94,6 +124,32 @@ class ProductService
             $gallery = $data['gallery'] ?? [];
             $images = json_encode(array_values(array_merge_recursive($gallery, $data['photos'])));
         }
+
+        if (isset($data['state']) || isset($data['addAttribute'])) {
+            $state = $data['state'] ?? [];
+            $addAttribute = $data['addAttribute'] ?? [];
+            $data['attribute'] = [];
+
+            foreach ($state as &$value) {
+                foreach ($value as $ket2 => $item) {
+                    if ($item == 'Add') {
+                        unset($value[$ket2]);
+                    }
+                }
+            }
+
+            $data['attribute'] = array_merge_recursive($state, $addAttribute);
+
+            foreach ($addAttribute as $key => $item) {
+                $attribute = Attribute::where('code', $key)->toBase()->first(['id']);
+                foreach ($item as $attr_new_val) {
+                    if ($attr_new_val) {
+                        AttributeValue::create(['attribute_id' => $attribute->id, 'value' => $attr_new_val ]);
+                    }
+                }
+            }
+        }
+
         $data->forget(['gallery']);
         $merge = $data->merge(compact('image', 'featured', 'images'));
         $product->fill($merge->toArray());

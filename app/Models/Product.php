@@ -27,7 +27,12 @@ class Product extends Model
         'image',
         'images',
         'category_id',
-        'brand_id'
+        'brand_id',
+        'attribute'
+    ];
+
+    protected $casts = [
+        'attribute' => 'array'
     ];
 
     public function category()

@@ -59,13 +59,7 @@ class ProductController extends Controller
     {
         try {
             $validated_data = collect($request);
-            $product = $this->productService->storeProduct($validated_data);
-
-            if (isset($validated_data['state'])) {
-                $state = $validated_data['state'];
-                $addAttribute = $validated_data['addAttribute'] ?? [];
-                $this->attributeService->storeProductAttribute($product, $state, $addAttribute);
-            }
+            $this->productService->storeProduct($validated_data);
         } catch (Throwable $e) {
             report($e);
             abort(500);
@@ -77,12 +71,11 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         $categories = $this->categoryService->getAllCategory();
         $brands = $this->brandService->getAllBrand();
-        $attributes = $this->attributeService->getAttributeApi();
-        $product = $this->productService->getProductWithAttributeByID($id);
+        $attributes = $this->attributeService->getAttributeApiWithValue();
         return view('admin.products.edit', compact('product', 'categories','brands','attributes'));
     }
 
@@ -90,17 +83,15 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      */
-    public function update(ProductRequest $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        $product = $this->productService->getProductByID($id);
-
-        try {
+//        try {
             $validated_data = collect($request);
             $this->productService->updateProduct($validated_data, $product);
-        } catch (Throwable $e) {
-            report($e);
-            abort(500);
-        }
+//        } catch (Throwable $e) {
+//            report($e);
+//            abort(500);
+//        }
 
         return redirect()->route('admin.products.index');
     }

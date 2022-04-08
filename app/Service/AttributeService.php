@@ -28,6 +28,10 @@ class AttributeService
     {
         return $this->attributeRepository->getAttribute();
     }
+   public function getAttributeApiWithValue()
+    {
+        return $this->attributeRepository->getAttributeApiWithValue();
+    }
 
     public function getAttributeApi()
     {
@@ -42,6 +46,11 @@ class AttributeService
     public function findAttributeById($id)
     {
         return $this->attributeRepository->findAttributeById($id);
+    }
+
+    public function findAttributeValueByCode($code)
+    {
+        return $this->attributeRepository->findAttributeValueByCode($code);
     }
 
     public function findAttributeValueById($id)

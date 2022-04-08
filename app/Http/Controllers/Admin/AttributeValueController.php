@@ -36,7 +36,8 @@ class AttributeValueController extends Controller
     public function getValues(Request $request)
     {
         try {
-            $attribute = $this->attributeService->findAttributeValueById($request->id);
+            $attribute = $this->attributeService->findAttributeValueByCode($request->input('code'));
+
         }catch (Throwable $e)
         {
             report($e);

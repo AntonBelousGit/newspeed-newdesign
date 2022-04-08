@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+    namespace Database\Seeders;
 
 use App\Models\Product;
 use Illuminate\Database\Seeder;
@@ -26,6 +26,7 @@ class ProductTableSeeder extends Seeder
                 'featured' => true,
                 'quantity' => 10,
                 'category_id' => 1,
+                'attribute' => ['size' => 'medium', 'color' => 'blue'],
                 'SKU'=> 'SKU'
             ]
         );

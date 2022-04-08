@@ -247,7 +247,7 @@
                                                     onchange="getSelect(this)">
                                                 <option value="Выберите" disabled selected>Выберите</option>
                                                 @foreach($attributes as $item)
-                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    <option value="{{$item->code}}">{{$item->name}}</option>
                                                 @endforeach
 
                                             </select>
@@ -330,14 +330,14 @@
 
 
         // создание второго селекта после полученных данных
-        function r_handler(elem, respons, id) {
+        function r_handler(elem, respons, code) {
             var tmpelem = $(elem).parent('td').parent('tr').find('td:nth-child(2)')
 
-            var str = '<select class="js-example-basic-single" name="state[' + id + '][]" onchange="addSelect(this)">'
-            for (var i = 0; i < respons.length; i++) {
-                str = str + '<option value="' + respons[i].id + '">' + respons[i].value + '</option>'
+            var str = '<select class="js-example-basic-single" name="state[' + code + '][]" onchange="addSelect(this)">'
+            for (var i = 0; i < respons.values.length; i++) {
+                str = str + '<option value="' + respons.values[i].value + '">' + respons.values[i].value + '</option>'
             }
-            str = str + '<option value="Add" data-for="' + id + '">Добавить</option></select>'
+            str = str + '<option value="Add" data-for="' + code + '">Добавить</option></select>'
 
             $(tmpelem).find('.wrap_add_input').remove();
 
@@ -359,10 +359,9 @@
                 url: r_path,
                 type: "GET",
                 data: {
-                    id: r_args
+                    code: r_args
                 },
                 success: function (response) {
-                    // console.log(response)
                     r_handler(elem, response, r_args)
                 },
                 error: function (response) {
@@ -374,10 +373,9 @@
 
         // создает селект при добавлении нового атрибута
         function createSelect(respons) {
-            console.log(respons)
             var str = '<select class="js-example-basic-single" name="" onchange="getSelect(this)"><option value="Выберите" disabled selected>Выберите</option>'
             for (var i = 0; i < respons.length; i++) {
-                str = str + '<option value="' + respons[i].id + '" name="attribute">' + respons[i].name + '</option>'
+                str = str + '<option value="' + respons[i].code + '" name="attribute">' + respons[i].name + '</option>'
             }
             str = str + '</select>'
 
@@ -405,7 +403,6 @@
                 url: r_path,
                 type: "POST",
                 success: function (response) {
-                    // console.log(response)
                     createSelect(response)
                 },
                 error: function (response) {
@@ -415,6 +412,7 @@
         }
 
         function addSelect(elem) {
+            console.log(elem);
             if ($(elem).val() == 0) return false
             if ($(elem).val() == 'Add') {
                 let add_to = $(elem).find("option:selected").attr('data-for');
