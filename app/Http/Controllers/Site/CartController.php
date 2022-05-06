@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Action\Render\RenderView;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Service\ProductService;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -25,7 +25,7 @@ class CartController extends Controller
         dd($cart);
     }
 
-    public function cartStore(Request $request)
+    public function cartStore(Request $request,RenderView $action)
     {
         $product_id = (int)$request->input('product_id');
 
@@ -43,15 +43,12 @@ class CartController extends Controller
         }
 
         if ($request->ajax()) {
-            $header = view('layouts.components.icon-cart', compact('cart'))->render();
-            $cart_view = view('frontend.cart.components.cart')->render();
-            $response['header'] = $header;
-            $response['cart_view'] = $cart_view;
+            $response = $action->handle($cart, $response);
         }
         return json_encode($response, JSON_THROW_ON_ERROR);
     }
 
-    public function cartDelete(Request $request)
+    public function cartDelete(Request $request,RenderView $action)
     {
         $id = $request->input('cart_id');
         $cart = Cart::instance('shopping');
@@ -62,16 +59,15 @@ class CartController extends Controller
         $response['cart_count'] = Cart::instance('shopping')->count();
         $response['message'] = "Product successfully removed";
 
+
         if ($request->ajax()) {
-            $header = view('layouts.components.icon-cart', compact('cart'))->render();
-            $cart_view = view('frontend.cart.components.cart')->render();
-            $response['header'] = $header;
-            $response['cart_view'] = $cart_view;
+          $response = $action->handle($cart, $response);
         }
+
         return $response;
     }
 
-    public function cartUpdate(Request $request)
+    public function cartUpdate(Request $request,RenderView $action)
     {
         $data = $this->validate($request, [
             'product_qty' => 'required|numeric',
@@ -91,10 +87,7 @@ class CartController extends Controller
         $response['cart_count'] = Cart::instance('shopping')->count();
 
         if ($request->ajax()) {
-            $header = view('layouts.components.icon-cart', compact('cart'))->render();
-            $cart_view = view('frontend.cart.components.cart')->render();
-            $response['header'] = $header;
-            $response['cart_view'] = $cart_view;
+            $response = $action->handle($cart, $response);
         }
         return $response;
     }

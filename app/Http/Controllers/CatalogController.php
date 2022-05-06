@@ -51,8 +51,10 @@ class CatalogController extends Controller
 
     public function product($slug)
     {
-        $product = $this->productService->getProductWithAttributeBySLUG($slug);
-        $attributes = $product->hasManyAttributes ?? [];
+        $product = $this->productService->getProductWithAttributeBySLUG($slug) ?? [];
+//        dd($product);
+//        $attributes = $product->hasManyAttributes ?? [];
+        $attributes = [];
         $similar_products = $this->productService->similarProducts($product->category_id, $product->id);
         return view('frontend.product.index', compact('product', 'attributes', 'similar_products'));
     }

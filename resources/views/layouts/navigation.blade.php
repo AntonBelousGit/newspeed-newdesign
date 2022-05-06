@@ -62,11 +62,11 @@
                         <a href="#" class="icon icon_user open_reg"></a>
                         <a href="#" class="icon icon_scales"><span>28</span></a>
                         <a href="{{ route('wishlist') }}" class="icon icon_heart"><span>28</span></a>
-                        <a href="#" class="icon icon_basket busket_open"><span>28</span></a>
+                        <a href="#" id="busket_open" class="icon icon_basket busket_open"><span>{{$cart->count()}}</span></a>
                     </div>
                     <div class="wrap_panel_icons_mobile">
-                        <a href="#" class="icon icon_basket4">
-                            <span>12</span>
+                        <a href="#" id="busket_open_mobile"  class="icon icon_basket4">
+                            <span>{{$cart->count()}}</span>
                         </a>
                     </div>
                 </div>
