@@ -5,7 +5,7 @@ namespace App\Action\Render;
 
 use Throwable;
 
-class RenderView
+class RenderViewAction
 {
     public function handle($cart, $response = [])
     {

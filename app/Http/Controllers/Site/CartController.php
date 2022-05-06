@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Action\Render\RenderView;
+use App\Action\Render\RenderViewAction;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Service\ProductService;
@@ -25,7 +25,7 @@ class CartController extends Controller
         dd($cart);
     }
 
-    public function cartStore(Request $request,RenderView $action)
+    public function cartStore(Request $request, RenderViewAction $action)
     {
         $product_id = (int)$request->input('product_id');
 
@@ -48,7 +48,7 @@ class CartController extends Controller
         return json_encode($response, JSON_THROW_ON_ERROR);
     }
 
-    public function cartDelete(Request $request,RenderView $action)
+    public function cartDelete(Request $request, RenderViewAction $action)
     {
         $id = $request->input('cart_id');
         $cart = Cart::instance('shopping');
@@ -67,7 +67,7 @@ class CartController extends Controller
         return $response;
     }
 
-    public function cartUpdate(Request $request,RenderView $action)
+    public function cartUpdate(Request $request, RenderViewAction $action)
     {
         $data = $this->validate($request, [
             'product_qty' => 'required|numeric',
