@@ -39,7 +39,6 @@ class CatalogController extends Controller
 
         $data['category_id'] = $category->id;
         $products = $actionProduct->handle($action->handle(ProductFilter::class, $data));
-
         if ($category->childrenCategories->count()) {
             return view('frontend.category.child-category.page-category', compact('category'));
         }
