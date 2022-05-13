@@ -38,7 +38,7 @@
                     <section class="product-left" id="tabs">
                         <div class="sliders">
                             @php
-                                $image = json_decode($product->images);
+                                $image = json_decode($product->images) ?? []
                             @endphp
                             <div class="tovar-nav">
                                 @each('frontend.product.components.image-nav', $image, 'item', 'frontend.product.components.empty')
