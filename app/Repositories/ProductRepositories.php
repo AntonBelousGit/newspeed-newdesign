@@ -64,7 +64,7 @@ class ProductRepositories extends CoreRepository
 
     public function similarProducts($cat_id,$prod_id)
     {
-        $product = $this->startCondition()->where('category_id', $cat_id)->where('id','!=',$prod_id)->toBase()->get();
+        $product = $this->startCondition()->where('category_id', $cat_id)->where('id','!=',$prod_id)->get();
 
         if (count($product) > 6) {
             return $product->random(6);
