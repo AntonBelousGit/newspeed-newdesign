@@ -26,7 +26,7 @@ class ProductRepositories extends CoreRepository
     public function featured()
     {
         $featured = cache()->remember('featured-product', 60 * 60 * 24, function () {
-            return $this->startCondition()->where('featured', 1)->limit(8)->toBase()->get()->toArray();
+            return $this->startCondition()->where('featured', 1)->limit(8)->get()->toArray();
         });
         return $featured;
     }
@@ -43,7 +43,7 @@ class ProductRepositories extends CoreRepository
     {
         $promotions = cache()->remember('promotions-product', 60 * 60 * 24, function () {
 
-            return $this->startCondition()->whereRaw('products.regular_price > products.sale_price')->limit(6)->toBase()->get()->toArray();
+            return $this->startCondition()->whereRaw('products.regular_price > products.sale_price')->limit(6)->get()->toArray();
         });
         return $promotions;
 
@@ -56,7 +56,7 @@ class ProductRepositories extends CoreRepository
     {
         $new_product = cache()->remember('new_product', 60 * 60 * 24, function () {
 
-            return $this->startCondition()->orderBy('created_at', 'desc')->limit(6)->toBase()->get()->toArray();
+            return $this->startCondition()->orderBy('created_at', 'desc')->limit(6)->get()->toArray();
 
         });
         return $new_product;
