@@ -24,7 +24,7 @@ class SingleProductResource extends JsonResource
             'sale_price' => $this->sale_price,
             'sku' => $this->SKU,
             'stock_status' => $this->stock_status,
-            'images' => array_merge($this->images,array($this->image)) ,
+            'images' => array_merge(json_decode($this->images),array($this->image)) ,
             'attribute' => $this->attribute,
         ];
     }
