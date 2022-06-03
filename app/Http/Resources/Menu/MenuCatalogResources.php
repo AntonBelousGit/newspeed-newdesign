@@ -18,7 +18,7 @@ class MenuCatalogResources extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'children_categories' => (isset($this->childrenCategories))? MenuCatalogResources::collection($this->childrenCategories): 'хуй',
+            'children_categories' => (isset($this->childrenCategories))? MenuCatalogResources::collection($this->childrenCategories): '',
         ];
     }
 }

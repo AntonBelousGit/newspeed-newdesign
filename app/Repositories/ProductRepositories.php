@@ -89,6 +89,6 @@ class ProductRepositories extends CoreRepository
     public function getProductWithAttributeBySLUG($slug)
     {
 //        return $this->startCondition()->with('hasManyAttributes.productAttributeValue','hasManyAttributes.attribute')->where('slug',$slug)->first();
-        return $this->startCondition()->where('slug',$slug)->first();
+        return $this->startCondition()->with('category.categoriesParent.categoriesParent')->where('slug',$slug)->first();
     }
 }

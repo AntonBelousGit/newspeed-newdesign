@@ -6,14 +6,9 @@ namespace App\Service;
 use App\Models\Attribute;
 use App\Models\AttributeValue;
 use App\Models\Product;
-use App\Models\ProductAttribute;
-use App\Repositories\AttributeRepository;
-use App\Repositories\AttributeValueRepository;
 use App\Repositories\ProductAttributeRepository;
 use App\Repositories\ProductRepositories;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 
@@ -96,7 +91,7 @@ class ProductService
                 dump($attribute);
                 foreach ($item as $attr_new_val) {
                     if ($attr_new_val) {
-                        AttributeValue::create(['attribute_id' => $attribute->id, 'value' => $attr_new_val ]);
+                        AttributeValue::create(['attribute_id' => $attribute->id, 'value' => $attr_new_val]);
                     }
                 }
             }
@@ -144,7 +139,7 @@ class ProductService
                 $attribute = Attribute::where('code', $key)->toBase()->first(['id']);
                 foreach ($item as $attr_new_val) {
                     if ($attr_new_val) {
-                        AttributeValue::create(['attribute_id' => $attribute->id, 'value' => $attr_new_val ]);
+                        AttributeValue::create(['attribute_id' => $attribute->id, 'value' => $attr_new_val]);
                     }
                 }
             }

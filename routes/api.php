@@ -24,7 +24,7 @@ Route::middleware(['api'])->group(function () {
 
     Route::get('/menu-catalog',[ApiCatalogController::class,'menu']);
     Route::get('/block',[ApiCatalogController::class,'block']);
-    Route::get('product/{slug}', [ApiCatalogController::class, 'product'])->name('product');
-    Route::get('category/{slug}', [ApiCatalogController::class, 'category'])->name('category');
+    Route::get('product/{slug}', [ApiCatalogController::class, 'product']);
+    Route::get('category/{slug}', [ApiCatalogController::class, 'category']);
 
 });

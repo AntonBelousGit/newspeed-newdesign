@@ -9,6 +9,7 @@ use App\Http\Filters\ProductFilter;
 use App\Http\Requests\Product\FilterRequest;
 use App\Http\Resources\Menu\MenuCatalogResources;
 use App\Http\Resources\SingleProduct\SimilarProductsResource;
+use App\Http\Resources\SingleProduct\SingleProductBreadcrumbResource;
 use App\Http\Resources\SingleProduct\SingleProductResource;
 use App\Models\Attribute;
 use App\Models\Category;
@@ -94,6 +95,12 @@ class ApiCatalogController extends Controller
 
         $similar_products = $this->productService->similarProducts($product->category_id, $product->id);
 
-        return new JsonResponse(['data' => ['product' => new SingleProductResource($product), 'similar_products' => SimilarProductsResource::collection($similar_products)]]);
+        return new JsonResponse([
+            'data' => [
+                'product' => new SingleProductResource($product),
+                'similar_products' => SimilarProductsResource::collection($similar_products),
+                'breadcrumb' => new SingleProductBreadcrumbResource($product->category),
+            ]
+        ]);
     }
 }
