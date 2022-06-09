@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiCategoryController;
 use App\Http\Controllers\Api\Frontend\ApiCatalogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware(['api'])->group(function () {
 
-    Route::get('/menu-catalog',[ApiCatalogController::class,'menu']);
-    Route::get('/block',[ApiCatalogController::class,'block']);
-    Route::get('product/{slug}', [ApiCatalogController::class, 'product']);
-    Route::get('category/{slug}', [ApiCatalogController::class, 'category']);
+//    Route::apiResources([
+//        'categories' => ApiCategoryController::class,
+//    ]);
+    Route::post('menu-catalog', function ( Request $request ) {
+        return ( new ApiCategoryController )->get_menu($request);
+    });
+
+//    Route::get('/menu-catalog',[ApiCatalogController::class,'menu']);
+//    Route::get('/block',[ApiCatalogController::class,'block']);
+//    Route::get('product/{slug}', [ApiCatalogController::class, 'product']);
+//    Route::get('category/{slug}', [ApiCatalogController::class, 'category']);
 
 });

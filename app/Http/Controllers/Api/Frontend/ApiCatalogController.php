@@ -20,6 +20,8 @@ use App\Service\CategoryService;
 use App\Service\ProductService;
 use App\Traits\ApiResponser;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class ApiCatalogController extends Controller
 {
@@ -36,6 +38,12 @@ class ApiCatalogController extends Controller
         $this->attributeService = $attributeService;
         $this->brandService = $brandService;
         $this->categoryService = $categoryService;
+    }
+
+    public function get_menu(Request $request, $url, $key)
+    {
+        $result['data'] = 123;
+        return Response::json(['result' => true],200);
     }
 
     public function menu()

@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\Product;
+use App\Observers\CategoryObserver;
 use App\Observers\GalleriesObserver;
 use App\Observers\ProductObserver;
 use Illuminate\Auth\Events\Registered;
@@ -33,5 +35,6 @@ class EventServiceProvider extends ServiceProvider
     {
         Product::observe(ProductObserver::class);
         Gallery::observe(GalleriesObserver::class);
+        Category::observe(CategoryObserver::class);
     }
 }

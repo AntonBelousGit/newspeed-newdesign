@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Model::preventLazyLoading(!app()->isProduction());
+//        Model::preventLazyLoading(!app()->isProduction());
         Schema::defaultStringLength(191);
 
         $catalog = Category::whereNull('category_id')->where('status', "true")->orderBy('sort', 'asc')
